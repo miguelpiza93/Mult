@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pizarra"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/text_Nivel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="39dp"
+        android:text="@string/nivel"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/buttonj1"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Juego 1"
+        android:textColor="#ffffff"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/buttonj2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Juego 2"
+        android:textColor="#ffffff"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/txt_Menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="27dp"
+        android:text="@string/menu"
+        android:visibility="visible"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_marginLeft="30dp"
+        android:layout_weight="0.69"
+        android:visibility="visible"
+        android:background="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent" >
+    </ListView>
+
+    <RadioGroup
+        android:id="@+id/Grupo_Nivel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.31"
+        android:visibility="gone"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/SinTiempo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/SinTiempo"
+            android:textColor="#ffffff" />
+
+        <RadioButton
+            android:id="@+id/Aprendiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Aprendiz"
+            android:textColor="#ffffff" />
+
+        <RadioButton
+            android:id="@+id/Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Normal"
+            android:textColor="#ffffff" />
+
+        <RadioButton
+            android:id="@+id/Reto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Reto"
+            android:textColor="#ffffff" />
+    </RadioGroup>
+
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.app.multiplicando.Abn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/abn" />
+
+</LinearLayout>
