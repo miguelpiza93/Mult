@@ -2,9 +2,12 @@ package com.app.multiplicando;
 
 //import com.google.android.gms.ads.*;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -32,6 +36,7 @@ public class PlaceholderFragment extends Fragment
     private Bundle b;
     private static InterstitialAd interstitial;
     private int juego;
+    private View rootView;
 
     /**
      * Returns a new instance of this fragment for the given section number.
@@ -50,7 +55,7 @@ public class PlaceholderFragment extends Fragment
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState )
     {
         super.onCreate(savedInstanceState);
-        View rootView = inflater.inflate( R.layout.fragment_main, container, false );
+        rootView = inflater.inflate( R.layout.fragment_main, container, false );
 
         // Create the interstitial.
         interstitial = new InterstitialAd( getActivity( ) );
@@ -60,6 +65,7 @@ public class PlaceholderFragment extends Fragment
         AdRequest adRequestI = new AdRequest.Builder()
                 //.addTestDevice( AdRequest.DEVICE_ID_EMULATOR )
                 .addTestDevice("E6D875D21E5D7044F76A3C6603BC25D6")
+                .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")
                 .build();
 
         // Begin loading your interstitial.
@@ -68,7 +74,7 @@ public class PlaceholderFragment extends Fragment
         b = new Bundle( );
 
         final TextView text = (TextView)rootView.findViewById( R.id.txt_Menu );
-        Typeface typeface = Typeface.createFromAsset( getActivity( ).getAssets( ), "fonts/BRADHIT0.ttf" );
+        Typeface typeface = Typeface.createFromAsset( getActivity( ).getAssets( ), "fonts/homeheart.ttf" );
         text.setTypeface( typeface );
 
         final TextView textNivel = (TextView)rootView.findViewById( R.id.text_Nivel );
@@ -189,6 +195,8 @@ public class PlaceholderFragment extends Fragment
                 textNivel.setVisibility( TextView.GONE );
                 grupo.setVisibility( RadioGroup.GONE );
 
+
+
                 nivel = 3;
                 Intent intent;
                 switch (juego) {
@@ -258,7 +266,7 @@ public class PlaceholderFragment extends Fragment
 
                 TextView textView=(TextView) view.findViewById(android.R.id.text1);
 
-                textView.setTextColor(Color.WHITE);
+                textView.setTextColor(Color.BLACK);
 
                 return view;
             }
@@ -273,6 +281,10 @@ public class PlaceholderFragment extends Fragment
                 // ListView Clicked item index
                 int tabla = position + 1;
                 b.putInt( "Tabla", tabla );
+
+                LinearLayout layout=(LinearLayout)rootView.findViewById(R.id.mainLayout);
+                layout.setBackgroundResource(R.drawable.tablas_opaca);
+
                 listView.setVisibility( ListView.GONE );
                 text.setVisibility( TextView.GONE );
                 j1.setVisibility( Button.VISIBLE );
@@ -282,5 +294,4 @@ public class PlaceholderFragment extends Fragment
 
         return rootView;
     }
-
 }

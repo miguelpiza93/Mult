@@ -20,7 +20,7 @@ public class ResultadoActivity extends Activity
 
         TextView text = (TextView) findViewById( R.id.txt_Resultado );
 
-        Typeface typeface = Typeface.createFromAsset( getAssets( ), "fonts/BRADHIT0.ttf" );
+        Typeface typeface = Typeface.createFromAsset( getAssets( ), "fonts/homeheart.ttf" );
         text.setTypeface( typeface, Typeface.BOLD );
 
         if( juego == 1 )

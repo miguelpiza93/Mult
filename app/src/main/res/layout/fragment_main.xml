@@ -4,7 +4,7 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pizarra"
+    android:background="@drawable/tablas"
     android:orientation="vertical" >
 
     <TextView
@@ -15,7 +15,7 @@
         android:layout_marginTop="39dp"
         android:text="@string/nivel"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorPrimaryDark"
         android:visibility="gone" />
 
     <Button
@@ -24,8 +24,7 @@
         android:layout_marginTop="70dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
-        android:text="Juego 1"
-        android:textColor="#ffffff"
+        android:background="@drawable/juego1"
         android:visibility="gone" />
 
     <Button
@@ -35,8 +34,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="10dp"
-        android:text="Juego 2"
-        android:textColor="#ffffff"
+        android:background="@drawable/juego2"
         android:visibility="gone" />
 
     <TextView
@@ -44,11 +42,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="32dp"
         android:text="@string/menu"
         android:visibility="visible"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#ffffff" />
+        android:textColor="@color/colorPrimaryDark" />
 
     <ListView
         android:id="@+id/listView"

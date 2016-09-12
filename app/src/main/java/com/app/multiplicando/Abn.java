@@ -32,6 +32,7 @@ public class Abn extends Fragment
         adView = (AdView)rootView.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice("E6D875D21E5D7044F76A3C6603BC25D6")
+                .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")
                 .build();
         adView.loadAd(adRequest);
 
