@@ -2,12 +2,9 @@ package com.app.multiplicando;
 
 //import com.google.android.gms.ads.*;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,10 +14,10 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -36,7 +33,6 @@ public class PlaceholderFragment extends Fragment
     private Bundle b;
     private static InterstitialAd interstitial;
     private int juego;
-    private View rootView;
 
     /**
      * Returns a new instance of this fragment for the given section number.
@@ -55,7 +51,7 @@ public class PlaceholderFragment extends Fragment
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState )
     {
         super.onCreate(savedInstanceState);
-        rootView = inflater.inflate( R.layout.fragment_main, container, false );
+        View rootView = inflater.inflate( R.layout.fragment_main, container, false );
 
         // Create the interstitial.
         interstitial = new InterstitialAd( getActivity( ) );
@@ -65,7 +61,6 @@ public class PlaceholderFragment extends Fragment
         AdRequest adRequestI = new AdRequest.Builder()
                 //.addTestDevice( AdRequest.DEVICE_ID_EMULATOR )
                 .addTestDevice("E6D875D21E5D7044F76A3C6603BC25D6")
-                .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")
                 .build();
 
         // Begin loading your interstitial.
@@ -74,14 +69,23 @@ public class PlaceholderFragment extends Fragment
         b = new Bundle( );
 
         final TextView text = (TextView)rootView.findViewById( R.id.txt_Menu );
-        Typeface typeface = Typeface.createFromAsset( getActivity( ).getAssets( ), "fonts/homeheart.ttf" );
+        Typeface typeface = Typeface.createFromAsset( getActivity( ).getAssets( ), "fonts/BRADHIT0.ttf" );
         text.setTypeface( typeface );
 
         final TextView textNivel = (TextView)rootView.findViewById( R.id.text_Nivel );
         textNivel.setTypeface( typeface );
 
-        final ListView listView = (ListView) rootView.findViewById( R.id.listView );
+        final Spinner spinner = (Spinner) rootView.findViewById(R.id.nivel_spinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapterSpiner = ArrayAdapter.createFromResource(getActivity( ),
+                R.array.nivel_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapterSpiner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapterSpiner);
 
+        final ListView listView = (ListView) rootView.findViewById( R.id.listView );
+/*
         final RadioGroup grupo = (RadioGroup) rootView.findViewById( R.id.Grupo_Nivel );
 
         final RadioButton sinTiempo = (RadioButton) rootView.findViewById( R.id.SinTiempo );
@@ -195,8 +199,6 @@ public class PlaceholderFragment extends Fragment
                 textNivel.setVisibility( TextView.GONE );
                 grupo.setVisibility( RadioGroup.GONE );
 
-
-
                 nivel = 3;
                 Intent intent;
                 switch (juego) {
@@ -218,6 +220,8 @@ public class PlaceholderFragment extends Fragment
                 }
             }
         } );
+*/
+
 
         final Button j1 = (Button) rootView.findViewById( R.id.buttonj1 );
         final Button j2 = (Button) rootView.findViewById( R.id.buttonj2 );
@@ -226,14 +230,11 @@ public class PlaceholderFragment extends Fragment
             @Override
             public void onClick( View arg0 )
             {
-                aprendiz.setChecked( false );
-                normal.setChecked( false );
-                reto.setChecked( false );
                 juego = 2;
                 j1.setVisibility(Button.GONE);
                 j2.setVisibility(Button.GONE);
                 textNivel.setVisibility( TextView.VISIBLE );
-                grupo.setVisibility( RadioGroup.VISIBLE );
+                iniciarJuego(spinner.getSelectedItem().toString());
             }
         } );
 
@@ -242,14 +243,11 @@ public class PlaceholderFragment extends Fragment
             @Override
             public void onClick( View arg0 )
             {
-                aprendiz.setChecked( false );
-                normal.setChecked( false );
-                reto.setChecked( false );
                 juego = 1;
                 j1.setVisibility(Button.GONE);
                 j2.setVisibility(Button.GONE);
                 textNivel.setVisibility( TextView.VISIBLE );
-                grupo.setVisibility( RadioGroup.VISIBLE );
+                iniciarJuego(spinner.getSelectedItem().toString());
             }
         } );
 
@@ -266,7 +264,7 @@ public class PlaceholderFragment extends Fragment
 
                 TextView textView=(TextView) view.findViewById(android.R.id.text1);
 
-                textView.setTextColor(Color.BLACK);
+                textView.setTextColor(Color.WHITE);
 
                 return view;
             }
@@ -281,17 +279,50 @@ public class PlaceholderFragment extends Fragment
                 // ListView Clicked item index
                 int tabla = position + 1;
                 b.putInt( "Tabla", tabla );
-
-                LinearLayout layout=(LinearLayout)rootView.findViewById(R.id.mainLayout);
-                layout.setBackgroundResource(R.drawable.tablas_opaca);
-
                 listView.setVisibility( ListView.GONE );
                 text.setVisibility( TextView.GONE );
-                j1.setVisibility( Button.VISIBLE );
-                j2.setVisibility( Button.VISIBLE );
+                // j1.setVisibility( Button.VISIBLE );
+                // j2.setVisibility( Button.VISIBLE );
             }
         });
 
         return rootView;
     }
+
+    private void iniciarJuego(String nivelSel){
+        if (nivelSel.equals(getString(R.string.SinTiempo))){
+            nivel = 0;
+        }
+        else if(nivelSel.equals(getString(R.string.Aprendiz))){
+            nivel = 1;
+        }
+        else if(nivelSel.equals(getString(R.string.Normal))){
+            nivel = 2;
+        }
+        else{
+            nivel = 3;
+        }
+
+
+
+        Intent intent;
+        switch (juego) {
+            case 2:
+                intent = new Intent( getActivity( ), GameActivity2.class);
+                break;
+            default:
+                intent = new Intent( getActivity( ), GameActivity.class);
+                break;
+        }
+        b.putInt( "Nivel", nivel );
+        intent.putExtras( b );
+        startActivity( intent );
+        //	getActivity( ).finish( );
+
+        if (interstitial.isLoaded())
+        {
+            interstitial.show();
+        }
+    }
+
 }

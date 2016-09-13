@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nivel_array">
+        <item>@string/SinTiempo</item>
+        <item>@string/Aprendiz</item>
+        <item>@string/Normal</item>
+        <item>@string/Reto</item>
+    </string-array>
+</resources>
