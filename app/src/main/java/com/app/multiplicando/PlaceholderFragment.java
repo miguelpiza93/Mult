@@ -69,7 +69,7 @@ public class PlaceholderFragment extends Fragment
         b = new Bundle( );
 
         final TextView text = (TextView)rootView.findViewById( R.id.txt_Menu );
-        Typeface typeface = Typeface.createFromAsset( getActivity( ).getAssets( ), "fonts/BRADHIT0.ttf" );
+        Typeface typeface = Typeface.createFromAsset( getActivity( ).getAssets( ), "fonts/homeheart.ttf" );
         text.setTypeface( typeface );
 
         final TextView textNivel = (TextView)rootView.findViewById( R.id.text_Nivel );
