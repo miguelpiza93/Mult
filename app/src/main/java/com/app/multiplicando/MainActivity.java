@@ -1,10 +1,14 @@
 package com.app.multiplicando;
 
+import android.app.Fragment;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.app.multiplicando.adapters.SectionsPagerAdapter;
 
@@ -43,5 +47,44 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+    }
+
+    boolean doubleBackToExitPressedOnce = false;
+    @Override
+    public void onBackPressed() {
+
+        if (doubleBackToExitPressedOnce) {
+
+            int current = mViewPager.getCurrentItem();
+
+            if(current == 0)//primera pestaña
+            {
+                android.support.v4.app.Fragment currentFragment = //getFragmentManager().findFragmentById(R.id.mainLayout);
+                getSupportFragmentManager().findFragmentById(R.id.mainLayout);
+                if (currentFragment instanceof PlaceholderFragment) {
+                    PlaceholderFragment actual = (PlaceholderFragment) currentFragment;
+                    actual.cambiarPantallaPrincipal(true);
+                }
+                else {
+                    super.onBackPressed();
+                }
+            }
+            else
+            {
+                super.onBackPressed();
+                return;
+            }
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit ", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
     }
 }

@@ -31,8 +31,10 @@ public class Abn extends Fragment
         // Buscar AdView como recurso y cargar una solicitud.
         adView = (AdView)rootView.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("E6D875D21E5D7044F76A3C6603BC25D6")
-                .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")
+                .addTestDevice("E6D875D21E5D7044F76A3C6603BC25D6")//Lo
+                .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")//Mi
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice("04675459C2BE09CF506EDD1002143111")//Genymotion
                 .build();
         adView.loadAd(adRequest);
 

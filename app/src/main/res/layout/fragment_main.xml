@@ -16,13 +16,14 @@
         android:text="@string/nivel"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/colorPrimaryDark"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <Spinner
         android:id="@+id/nivel_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/buttonj1"
@@ -31,7 +32,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/juego1"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/buttonj2"
@@ -41,7 +42,7 @@
         android:layout_marginBottom="30dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/juego2"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/txt_Menu"
@@ -50,7 +51,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="32dp"
         android:text="@string/menu"
-        android:visibility="gone"
+        android:visibility="visible"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/colorPrimaryDark" />
 
@@ -60,7 +61,7 @@
         android:layout_height="0dip"
         android:layout_marginLeft="30dp"
         android:layout_weight="0.69"
-        android:visibility="gone"
+        android:visibility="visible"
         android:background="@android:color/transparent"
         android:cacheColorHint="@android:color/transparent" >
     </ListView>
