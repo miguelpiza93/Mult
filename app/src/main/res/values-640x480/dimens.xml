@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_size_piedra">14dp</dimen>
+    <dimen name="text_size_piedra">24dp</dimen>
+    <dimen name="padding_piedra_question">38dp</dimen>
 </resources>
