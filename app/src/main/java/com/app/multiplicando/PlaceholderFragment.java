@@ -17,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -87,6 +88,8 @@ public class PlaceholderFragment extends Fragment
 
         // Begin loading your interstitial.
         interstitial.loadAd(adRequestI);
+
+        pantallaPrincipal = true;
 
         spinnerNivel = (Spinner) rootView.findViewById(R.id.nivel_spinner);
 
@@ -200,6 +203,7 @@ public class PlaceholderFragment extends Fragment
     }
 
     public void cambiarPantallaPrincipal(boolean mostrarInicial){
+        LinearLayout layout=(LinearLayout)getActivity().findViewById(R.id.mainLayout);
         if(mostrarInicial){
             listView.setVisibility( ListView.VISIBLE );
             text.setVisibility( TextView.VISIBLE );
@@ -207,6 +211,7 @@ public class PlaceholderFragment extends Fragment
             j1.setVisibility( Button.GONE );
             j2.setVisibility( Button.GONE );
             spinnerNivel.setVisibility(Spinner.GONE);
+            layout.setBackgroundResource(R.drawable.tablas);
             pantallaPrincipal = true;
         }
         else{
@@ -216,7 +221,12 @@ public class PlaceholderFragment extends Fragment
             j1.setVisibility( Button.VISIBLE );
             j2.setVisibility( Button.VISIBLE );
             spinnerNivel.setVisibility(Spinner.VISIBLE);
+            layout.setBackgroundResource(R.drawable.tablas_opaca);
             pantallaPrincipal = false;
         }
+    }
+
+    public boolean isInHome(){
+        return pantallaPrincipal;
     }
 }

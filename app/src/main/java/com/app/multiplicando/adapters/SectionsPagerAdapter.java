@@ -12,13 +12,16 @@ import android.util.Log;
 
 import com.app.multiplicando.AndroidVideoPlayer;
 import com.app.multiplicando.PlaceholderFragment;
+import com.app.multiplicando.interfaces.IComunication;
 
 /**
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class SectionsPagerAdapter extends FragmentStatePagerAdapter
+public class SectionsPagerAdapter extends FragmentStatePagerAdapter implements IComunication
 {
+
+    private PlaceholderFragment actual;
 
     public SectionsPagerAdapter( FragmentManager fm )
     {
@@ -37,7 +40,8 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter
             case 1:
                 return new AndroidVideoPlayer( );
             default:
-                return PlaceholderFragment.newInstance(  );
+                actual = PlaceholderFragment.newInstance(  );
+                return actual;
         }
 
     }
@@ -61,5 +65,15 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter
                 return "Videos";
         }
         return null;
+    }
+
+    @Override
+    public void comunicate() {
+        actual.cambiarPantallaPrincipal(true);
+    }
+
+    @Override
+    public boolean isInHome() {
+        return actual.isInHome();
     }
 }
