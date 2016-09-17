@@ -57,6 +57,8 @@ public class GameActivity extends Activity
 
     private int nivel;
 
+    private TextView labresp;
+
     @Override
     protected void onCreate( Bundle savedInstanceState )
     {
@@ -105,7 +107,7 @@ public class GameActivity extends Activity
                 break;
         }
 
-        final TextView labresp = ( TextView ) findViewById( R.id.txtAnswer );
+        labresp = ( TextView ) findViewById( R.id.txtAnswer );
 
         TextView puntajeM = ( TextView ) findViewById( R.id.puntajeMax );
         puntajeM.setText( ((double)puntajeMaximo)/2.0 + "");
@@ -132,13 +134,7 @@ public class GameActivity extends Activity
                 {
                     if( tecla_sonido != null && !tecla_sonido.isPlaying( ) )
                         tecla_sonido.start( );
-                    String r = labresp.getText( ).toString( );
-                    if( r.equals( "?" ) )
-                    {
-                        labresp.setText( "0" );
-                    }
-                    else
-                        labresp.setText( r+0 );
+                    actualizarRespuesta("0");
                 }
             }
         } );
@@ -152,13 +148,7 @@ public class GameActivity extends Activity
                 {
                     if( tecla_sonido != null && !tecla_sonido.isPlaying( ) )
                         tecla_sonido.start( );
-                    String r = labresp.getText( ).toString( );
-                    if( r.equals( "?" ) )
-                    {
-                        labresp.setText( "1" );
-                    }
-                    else
-                        labresp.setText( r+1 );
+                    actualizarRespuesta("1");
                 }
             }
         } );
@@ -172,13 +162,7 @@ public class GameActivity extends Activity
                 {
                     if( tecla_sonido != null && !tecla_sonido.isPlaying( ) )
                         tecla_sonido.start( );
-                    String r = labresp.getText( ).toString( );
-                    if( r.equals( "?" ) )
-                    {
-                        labresp.setText( "2" );
-                    }
-                    else
-                        labresp.setText( r+2 );
+                    actualizarRespuesta("2");
                 }
             }
         } );
@@ -193,12 +177,7 @@ public class GameActivity extends Activity
                     if( tecla_sonido != null && !tecla_sonido.isPlaying( ) )
                         tecla_sonido.start( );
                     String r = labresp.getText( ).toString( );
-                    if( r.equals( "?" ) )
-                    {
-                        labresp.setText( "3" );
-                    }
-                    else
-                        labresp.setText( r+3 );
+                    actualizarRespuesta("3");
                 }
             }
         } );
@@ -212,13 +191,7 @@ public class GameActivity extends Activity
                 {
                     if( tecla_sonido != null && !tecla_sonido.isPlaying( ) )
                         tecla_sonido.start( );
-                    String r = labresp.getText( ).toString( );
-                    if( r.equals( "?" ) )
-                    {
-                        labresp.setText( "4" );
-                    }
-                    else
-                        labresp.setText( r+4 );
+                    actualizarRespuesta("4");
                 }
             }
         } );
@@ -232,13 +205,7 @@ public class GameActivity extends Activity
                 {
                     if( tecla_sonido != null && !tecla_sonido.isPlaying( ) )
                         tecla_sonido.start( );
-                    String r = labresp.getText( ).toString( );
-                    if( r.equals( "?" ) )
-                    {
-                        labresp.setText( "5" );
-                    }
-                    else
-                        labresp.setText( r+5 );
+                    actualizarRespuesta("5");
                 }
             }
         } );
@@ -252,13 +219,7 @@ public class GameActivity extends Activity
                 {
                     if( tecla_sonido != null && !tecla_sonido.isPlaying( ) )
                         tecla_sonido.start( );
-                    String r = labresp.getText( ).toString( );
-                    if( r.equals( "?" ) )
-                    {
-                        labresp.setText( "6" );
-                    }
-                    else
-                        labresp.setText( r+6 );
+                    actualizarRespuesta("6");
                 }
             }
         } );
@@ -272,13 +233,7 @@ public class GameActivity extends Activity
                 {
                     if( tecla_sonido != null && !tecla_sonido.isPlaying( ) )
                         tecla_sonido.start( );
-                    String r = labresp.getText( ).toString( );
-                    if( r.equals( "?" ) )
-                    {
-                        labresp.setText( "7" );
-                    }
-                    else
-                        labresp.setText( r+7 );
+                    actualizarRespuesta("7");
                 }
             }
         } );
@@ -292,13 +247,7 @@ public class GameActivity extends Activity
                 {
                     if( tecla_sonido != null && !tecla_sonido.isPlaying( ) )
                         tecla_sonido.start( );
-                    String r = labresp.getText( ).toString( );
-                    if( r.equals( "?" ) )
-                    {
-                        labresp.setText( "8" );
-                    }
-                    else
-                        labresp.setText( r+8 );
+                    actualizarRespuesta("8");
                 }
             }
         } );
@@ -312,13 +261,7 @@ public class GameActivity extends Activity
                 {
                     if( tecla_sonido != null && !tecla_sonido.isPlaying( ) )
                         tecla_sonido.start( );
-                    String r = labresp.getText( ).toString( );
-                    if( r.equals( "?" ) )
-                    {
-                        labresp.setText( "9" );
-                    }
-                    else
-                        labresp.setText( r+9 );
+                    actualizarRespuesta("9");
                 }
             }
         } );
@@ -330,11 +273,7 @@ public class GameActivity extends Activity
             {
                 if( tecla_sonido != null && !tecla_sonido.isPlaying( ) )
                     tecla_sonido.start( );
-                String r = labresp.getText( ).toString( );
-                if( !r.equals( "?" ) && r.length( ) > 0 )
-                {
-                    labresp.setText( r.substring( 0, r.length( ) - 1 ) );
-                }
+                actualizarRespuesta(null);
             }
         } );
 
@@ -435,6 +374,26 @@ public class GameActivity extends Activity
         startActivity( intent );
 
         GameActivity.this.finish( );
+    }
+
+    private void actualizarRespuesta(String resp){
+        String r = labresp.getText( ).toString( );
+        if( resp != null && !resp.isEmpty() ){
+            if( r.equals( "?" ) )
+            {
+                labresp.setText( resp );
+            }
+            else {
+                if(r.length() < 2)
+                    labresp.setText(r + resp);
+            }
+        }
+        else{
+            if( !r.equals( "?" ) && r.length( ) > 0 )
+            {
+                labresp.setText( r.substring( 0, r.length( ) - 1 ) );
+            }
+        }
     }
 
     private void nextQuestion( )
