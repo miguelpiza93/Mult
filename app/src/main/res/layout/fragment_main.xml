@@ -4,15 +4,16 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tablas"
+    android:background="@drawable/tablas_opaca"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/text_Nivel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="@dimen/margin_top_nivel"
+        android:layout_marginLeft="@dimen/margin_nivel"
+        android:textSize="@dimen/text_size_piedra"
         android:text="@string/nivel"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/colorPrimaryDark"
@@ -22,6 +23,8 @@
         android:id="@+id/nivel_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_piedra"
+        android:layout_marginLeft="@dimen/margin_nivel"
         android:gravity="center_horizontal"
         android:visibility="gone"/>
 
@@ -29,7 +32,8 @@
         android:id="@+id/buttonj1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/margin_btn_juegos"
         android:background="@drawable/juego1"
         android:visibility="gone" />
 
@@ -37,8 +41,8 @@
         android:id="@+id/buttonj2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="30dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/margin_btn_juegos"
         android:background="@drawable/juego2"
         android:visibility="gone" />
 
@@ -47,7 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/margin_pregunta"
+        android:textSize="@dimen/text_size_piedra"
         android:text="@string/menu"
         android:visibility="visible"
         android:textAppearance="?android:attr/textAppearanceLarge"

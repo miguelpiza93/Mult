@@ -83,7 +83,8 @@ public class PlaceholderFragment extends Fragment
                 .addTestDevice( AdRequest.DEVICE_ID_EMULATOR )
                 .addTestDevice("E6D875D21E5D7044F76A3C6603BC25D6")//Mi
                 .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")//Lo
-                .addTestDevice("04675459C2BE09CF506EDD1002143111")//Genymotion
+                .addTestDevice("04675459C2BE09CF506EDD1002143111")//Genymotion tablet
+                .addTestDevice("2911693A4370B61588F14C331189465F")//Nexus one
                 .build();
 
         // Begin loading your interstitial.
@@ -162,7 +163,7 @@ public class PlaceholderFragment extends Fragment
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 // ListView Clicked item index
-                int tabla = position + 1;
+                int tabla = position == 0 ? 10 : position; //10 = todas las tablas
                 b.putInt( "Tabla", tabla );
                 cambiarPantallaPrincipal(false);
             }

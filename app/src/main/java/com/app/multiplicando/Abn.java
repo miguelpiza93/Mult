@@ -34,7 +34,8 @@ public class Abn extends Fragment
                 .addTestDevice("E6D875D21E5D7044F76A3C6603BC25D6")//Lo
                 .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")//Mi
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice("04675459C2BE09CF506EDD1002143111")//Genymotion
+                .addTestDevice("04675459C2BE09CF506EDD1002143111")//Genymotion tablet
+                .addTestDevice("2911693A4370B61588F14C331189465F")//Nexus one
                 .build();
         adView.loadAd(adRequest);
 

@@ -2,4 +2,5 @@
 <resources>
     <dimen name="text_size_piedra">24dp</dimen>
     <dimen name="padding_piedra_question">38dp</dimen>
+    <dimen name="margin_btn_juegos">24dp</dimen>
 </resources>

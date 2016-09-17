@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_size_piedra">14dp</dimen>
-    <dimen name="padding_piedra_question">34dp</dimen>
+    <dimen name="padding_piedra_question">2dp</dimen>
+    <dimen name="margin_btn_juegos">44dp</dimen>
 </resources>

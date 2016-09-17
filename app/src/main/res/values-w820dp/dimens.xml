@@ -6,4 +6,8 @@
     <dimen name="appbar_height">60dp</dimen>
     <dimen name="text_size_piedra">32dp</dimen>
     <dimen name="padding_piedra_question">50dp</dimen>
+    <dimen name="margin_pregunta">45dp</dimen>
+    <dimen name="margin_btn_juegos">104dp</dimen>
+    <dimen name="margin_nivel">120dp</dimen>
+    <dimen name="margin_top_nivel">90dp</dimen>
 </resources>

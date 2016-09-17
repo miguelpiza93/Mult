@@ -74,6 +74,7 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter implements I
 
     @Override
     public boolean isInHome() {
-        return actual.isInHome();
+        boolean home = actual == null ? true : actual.isInHome();
+        return home;
     }
 }
