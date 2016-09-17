@@ -5,7 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_game">Multiplicando</string>
     <string name="menu">¿Con qué tabla quieres practicar?</string>
-    <string name="nivel">Escoge el nivel para empezar \n a multiplicar!</string>
+    <string name="nivel">Escoge la dificultad</string>
     <string name="SinTiempo">Sin Tiempo</string>
     <string name="Aprendiz">Aprendiz</string>
     <string name="Normal">Normal</string>

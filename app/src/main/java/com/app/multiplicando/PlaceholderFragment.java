@@ -134,19 +134,23 @@ public class PlaceholderFragment extends Fragment
             }
         } );
 
-        String[] values = new String[] { "Tabla del 1", "Tabla del 2", "Tabla del 3", "Tabla del 4", "Tabla del 5",
-                "Tabla del 6", "Tabla del 7", "Tabla del 8", "Tabla del 9", "Todas las tablas" };
+        String[] values = new String[] {"Todas las tablas", "Tabla del 1", "Tabla del 2", "Tabla del 3", "Tabla del 4", "Tabla del 5",
+                "Tabla del 6", "Tabla del 7", "Tabla del 8", "Tabla del 9" };
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, values);
         /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity( ), android.R.layout.simple_list_item_1, android.R.id.text1, values)
         {
+
             @Override
             public View getView(int position, View convertView,	ViewGroup parent)
             {
                 View view =super.getView(position, convertView, parent);
+
                 TextView textView=(TextView) view.findViewById(android.R.id.text1);
+
                 textView.setTextColor(Color.WHITE);
+
                 return view;
             }
         };*/

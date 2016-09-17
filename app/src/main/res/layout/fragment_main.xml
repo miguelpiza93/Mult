@@ -11,8 +11,8 @@
         android:id="@+id/text_Nivel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginLeft="10dp"
         android:text="@string/nivel"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/colorPrimaryDark"
@@ -28,8 +28,7 @@
     <Button
         android:id="@+id/buttonj1"
         android:layout_width="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/juego1"
         android:visibility="gone" />
@@ -37,10 +36,9 @@
     <Button
         android:id="@+id/buttonj2"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="30dp"
-        android:layout_marginTop="10dp"
         android:background="@drawable/juego2"
         android:visibility="gone" />
 
