@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
 import com.app.multiplicando.AndroidVideoPlayer;
+import com.app.multiplicando.CatalogoTablas;
 import com.app.multiplicando.PlaceholderFragment;
 import com.app.multiplicando.interfaces.IComunication;
 
@@ -38,19 +39,20 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter implements I
         switch ( position )
         {
             case 1:
+                return new CatalogoTablas();
+            case 2:
                 return new AndroidVideoPlayer( );
             default:
                 actual = PlaceholderFragment.newInstance(  );
                 return actual;
         }
-
     }
 
     @Override
     public int getCount( )
     {
         // Show 2 total pages.
-        return 2;
+        return 3;
     }
 
     @Override
@@ -62,6 +64,8 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter implements I
             case 0:
                 return "Juegos";
             case 1:
+                return "Aprende";
+            case 2:
                 return "Videos";
         }
         return null;

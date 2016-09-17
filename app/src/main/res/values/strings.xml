@@ -14,8 +14,7 @@
     <string name="title_activity_game_activity2">Multiplicando</string>
     <string name="title_activity_resultado">Puntaje</string>
     <string name="hello_world"></string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="banner_catalogo_tablas">ca-app-pub-6455142835794611/9291470280</string>
+    <string name="intersticial">Hello blank fragment</string>
 
 </resources>
