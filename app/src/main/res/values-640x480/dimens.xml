@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_size_piedra">24dp</dimen>
+    <!-- Text Size -->
+    <dimen name="text_size_piedra">24sp</dimen>
+    <dimen name="text_size_question">62sp</dimen>
+    <dimen name="text_size_max_score">18sp</dimen>
+    <dimen name="text_size_empezar">22sp</dimen>
+    <dimen name="text_size_result">18sp</dimen>
+    <!--Other -->
     <dimen name="padding_piedra_question">38dp</dimen>
+    <dimen name="margin_top_question">90dp</dimen>
+    <dimen name="margin_top_rating_bar">12dp</dimen>
     <dimen name="margin_btn_juegos">24dp</dimen>
 </resources>

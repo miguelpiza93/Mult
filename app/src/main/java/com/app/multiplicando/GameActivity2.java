@@ -16,6 +16,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class GameActivity2 extends Activity
@@ -40,6 +41,7 @@ public class GameActivity2 extends Activity
     private MediaPlayer tecla_sonido, fin;
     private int puntajeMaximo;
     private int nivel;
+    private RelativeLayout layout;
 
     public GameActivity2()
     {
@@ -53,6 +55,7 @@ public class GameActivity2 extends Activity
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game_activity2);
+        layout = (RelativeLayout)this.findViewById(R.id.layout_game2);
 
         tecla_sonido = MediaPlayer.create( this, R.raw.sonido );
         fin = MediaPlayer.create( this, R.raw.fin );
@@ -153,9 +156,9 @@ public class GameActivity2 extends Activity
 
         start = (Button) findViewById(R.id.start);
         start.setOnClickListener(new OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
+                layout.setBackgroundResource(R.drawable.background_juego);
                 start();
             }
         });
