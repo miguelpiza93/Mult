@@ -17,4 +17,5 @@
     <dimen name="margin_top_nivel">20dp</dimen>
     <dimen name="margin_top_question">60dp</dimen>
     <dimen name="margin_top_rating_bar">8dp</dimen>
+    <dimen name="margin_catalogo">50dp</dimen>
 </resources>

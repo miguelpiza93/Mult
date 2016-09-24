@@ -4,23 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/idLayoutTabla"
     tools:context=".TablaActivity">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_li"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:layout_scrollFlags="scroll|enterAlways"
-        android:theme="@style/GalaxyZooThemeToolbarDarkOverflow"
-        app:popupTheme="@style/Theme.AppCompat.NoActionBar">
-    </android.support.v7.widget.Toolbar>
-    
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/idLayoutTabla"
-        android:layout_marginTop="?attr/actionBarSize">
-    </RelativeLayout>
 
 </RelativeLayout>

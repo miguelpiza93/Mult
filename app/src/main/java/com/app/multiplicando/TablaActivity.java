@@ -14,22 +14,6 @@ public class TablaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabla);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_li);
-        setSupportActionBar(toolbar);
-
-        try {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
-        catch (NullPointerException e){}
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TablaActivity.this.finish();
-            }
-        });
-
         int tabla = getIntent().getIntExtra("Tabla", 0);
         int idResource = 0;
         switch (tabla){
