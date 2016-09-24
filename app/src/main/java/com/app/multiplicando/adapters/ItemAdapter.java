@@ -35,7 +35,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.JuegoViewHolde
     @Override
     public void onBindViewHolder(JuegoViewHolder viewHolder, int i) {
         viewHolder.nombre.setText(items.get(i).getNombre());
-        viewHolder.descripcion.setText(items.get(i).getDescripcion());
         viewHolder.numero = items.get(i).getNumero();
     }
 
@@ -47,7 +46,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.JuegoViewHolde
     public static class JuegoViewHolder extends RecyclerView.ViewHolder{
 
         public TextView nombre;
-        public TextView descripcion;
         public int numero;
 
         public JuegoViewHolder(final View itemView) {
@@ -58,9 +56,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.JuegoViewHolde
                     listener.callBack(numero);
                 }
             });
-
             nombre = (TextView) itemView.findViewById(R.id.nombre);
-            descripcion = (TextView) itemView.findViewById(R.id.descripcion);
         }
     }
 }

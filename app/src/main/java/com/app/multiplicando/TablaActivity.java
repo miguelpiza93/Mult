@@ -14,6 +14,8 @@ public class TablaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabla);
 
+        System.gc();
+
         int tabla = getIntent().getIntExtra("Tabla", 0);
         int idResource = 0;
         switch (tabla){
