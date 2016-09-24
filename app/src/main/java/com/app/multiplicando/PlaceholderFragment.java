@@ -163,7 +163,7 @@ public class PlaceholderFragment extends Fragment
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 // ListView Clicked item index
-                int tabla = position == 0 ? 10 : position; //10 = todas las tablas
+                int tabla = position == 0 ? -1 : position; //-1 = todas las tablas
                 b.putInt( "Tabla", tabla );
                 cambiarPantallaPrincipal(false);
             }

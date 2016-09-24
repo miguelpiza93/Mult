@@ -69,7 +69,7 @@ public class GameActivity2 extends Activity
         puntos.setText("Puntos: " + veces );
         ba = (Button) findViewById(R.id.button1J2);
         numA = getIntent( ).getExtras( ).getInt( "Tabla" );
-        todas = ( numA == 10 );
+        todas = ( numA == -1 );
 
         nivel = getIntent( ).getExtras( ).getInt( "Nivel" );
 

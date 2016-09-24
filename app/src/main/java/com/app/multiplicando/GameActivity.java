@@ -86,7 +86,7 @@ public class GameActivity extends Activity
         mostrados = new ArrayList< Integer >( 10 );
 
         numA = getIntent( ).getExtras( ).getInt( "Tabla" );
-        todas = ( numA == 10 );
+        todas = ( numA == -1 );
 
         nivel = getIntent( ).getExtras( ).getInt( "Nivel" );
         puntajeMaximo = DataBase.getInstanse( getApplicationContext() ).darMayorPuntaje( 1 , numA, nivel );
