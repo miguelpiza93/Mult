@@ -84,7 +84,7 @@ public class CatalogoTablas extends Fragment implements IAdapterComunication {
 
     private List<Item> getItemsTablas(){
         List<Item> tablas = new ArrayList<>();
-        for (int i = 1; i <10 ; i++) {
+        for (int i = 1; i <11 ; i++) {
             tablas.add(new Item("Tabla del ".concat(String.valueOf(i)),
                     "Estudia la tabla del " + i, i));
         }

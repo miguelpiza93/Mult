@@ -384,7 +384,7 @@ public class GameActivity extends Activity
                 labresp.setText( resp );
             }
             else {
-                if(r.length() < 2)
+                if(r.length() < 3)
                     labresp.setText(r + resp);
             }
         }
