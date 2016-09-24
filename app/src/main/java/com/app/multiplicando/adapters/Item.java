@@ -7,19 +7,17 @@ package com.app.multiplicando.adapters;
 public class Item {
 
     private String nombre;
-
+    private int numero;
     private String descripcion;
-
-    private String portada;
 
     public Item(){
 
     }
 
-    public Item(String nombre, String descripcion, String portada) {
+    public Item(String nombre, String descripcion, int numero) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.portada = portada;
+        this.numero = numero;
     }
 
     public String getNombre() {
@@ -38,11 +36,11 @@ public class Item {
         this.descripcion = descripcion;
     }
 
-    public String getPortada() {
-        return portada;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setPortada(String portada) {
-        this.portada = portada;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 }

@@ -4,7 +4,7 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tablas_opaca"
+    android:background="@drawable/tablas"
     android:orientation="vertical" >
 
     <TextView

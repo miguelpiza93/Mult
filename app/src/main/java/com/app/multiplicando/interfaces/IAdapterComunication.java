@@ -5,5 +5,5 @@ package com.app.multiplicando.interfaces;
  */
 public interface IAdapterComunication {
 
-    public void callBack( String juego);
+    public void callBack( int juego);
 }

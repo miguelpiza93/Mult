@@ -34,10 +34,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.JuegoViewHolde
 
     @Override
     public void onBindViewHolder(JuegoViewHolder viewHolder, int i) {
-        //viewHolder.imagen.setImageResource(ImagenesId.getDrawableId(items.get(i).getPortada()));
-        viewHolder.imagen.setImageResource(R.drawable.image_not_available);
         viewHolder.nombre.setText(items.get(i).getNombre());
         viewHolder.descripcion.setText(items.get(i).getDescripcion());
+        viewHolder.numero = items.get(i).getNumero();
     }
 
     @Override
@@ -47,20 +46,19 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.JuegoViewHolde
 
     public static class JuegoViewHolder extends RecyclerView.ViewHolder{
 
-        public ImageView imagen;
         public TextView nombre;
         public TextView descripcion;
+        public int numero;
 
         public JuegoViewHolder(final View itemView) {
             super(itemView);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    listener.callBack(nombre.getText().toString());
+                    listener.callBack(numero);
                 }
             });
 
-            imagen = (ImageView) itemView.findViewById(R.id.imagen);
             nombre = (TextView) itemView.findViewById(R.id.nombre);
             descripcion = (TextView) itemView.findViewById(R.id.descripcion);
         }

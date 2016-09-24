@@ -42,6 +42,10 @@ public class CatalogoTablas extends Fragment implements IAdapterComunication {
         adView = (AdView) rootView.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice("E6D875D21E5D7044F76A3C6603BC25D6")//Lo
+                .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")//Mi
+                .addTestDevice("04675459C2BE09CF506EDD1002143111")//Genymotion tablet
+                .addTestDevice("2911693A4370B61588F14C331189465F")//Nexus one
                 .build();
         adView.loadAd(adRequest);
 
@@ -82,20 +86,22 @@ public class CatalogoTablas extends Fragment implements IAdapterComunication {
         List<Item> tablas = new ArrayList<>();
         for (int i = 1; i <10 ; i++) {
             tablas.add(new Item("Tabla del ".concat(String.valueOf(i)),
-                    "Estudia la tabla del " + i, ""));
+                    "Estudia la tabla del " + i, i));
         }
         return tablas;
     }
 
     @Override
-    public void callBack(String tabla) {
-        Intent intent = null;
+    public void callBack(int tabla) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("Tabla", tabla);
 
-        if (intent != null) {
-            startActivity(intent);
-            if (interstitial.isLoaded()) {
-                interstitial.show();
-            }
+        Intent intent = new Intent(getActivity(), TablaActivity.class);
+        intent.putExtras(bundle);
+
+        startActivity(intent);
+        if (interstitial.isLoaded()) {
+            interstitial.show();
         }
     }
 

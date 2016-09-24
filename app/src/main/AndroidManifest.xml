@@ -19,7 +19,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,7 +31,10 @@
         <activity
             android:name=".ResultadoActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".CatalogoTablas"></activity>
+        <activity
+            android:name=".TablaActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
