@@ -18,22 +18,34 @@ public class TablaActivity extends AppCompatActivity {
         int idResource = 0;
         switch (tabla){
             case 1:
+                idResource = R.drawable.tabla1;
                 break;
             case 2:
+                idResource = R.drawable.tabla2;
                 break;
             case 3:
+                idResource = R.drawable.tabla3;
                 break;
             case 4:
+                idResource = R.drawable.tabla4;
                 break;
             case 5:
+                idResource = R.drawable.tabla5;
                 break;
             case 6:
+                idResource = R.drawable.tabla6;
                 break;
             case 7:
+                idResource = R.drawable.tabla7;
                 break;
             case 8:
+                idResource = R.drawable.tabla8;
                 break;
             case 9:
+                idResource = R.drawable.tabla9;
+                break;
+            case 10:
+                idResource = R.drawable.tabla10;
                 break;
         }
 
