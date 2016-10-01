@@ -1,5 +1,6 @@
 package com.app.multiplicando;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -29,14 +30,25 @@ public class Abn extends Fragment
         View rootView = inflater.inflate( R.layout.abn, container, false );
 
         // Buscar AdView como recurso y cargar una solicitud.
+        //TODO: quitar test de anuncios
         adView = (AdView)rootView.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("E6D875D21E5D7044F76A3C6603BC25D6")//Lo
-                .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")//Mi
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice("04675459C2BE09CF506EDD1002143111")//Genymotion tablet
-                .addTestDevice("2911693A4370B61588F14C331189465F")//Nexus one
+
+        AdRequest adRequest;
+
+        if(BuildConfig.DEBUG){
+            adRequest = new AdRequest.Builder()
+                    .addTestDevice("E6D875D21E5D7044F76A3C6603BC25D6")//Lo
+                    .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")//Mi
+                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                    .addTestDevice("04675459C2BE09CF506EDD1002143111")//Genymotion tablet
+                    .addTestDevice("2911693A4370B61588F14C331189465F")//Nexus one
+                    .build();
+        }
+        else{
+            adRequest = new AdRequest.Builder()
                 .build();
+        }
+
         adView.loadAd(adRequest);
 
         return rootView;
