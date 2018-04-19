@@ -43,6 +43,7 @@
 
     <TextView
         android:id="@+id/preguntaJ2"
+        style="@style/cuestionStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/progressBarJ2"
@@ -50,7 +51,6 @@
         android:layout_marginTop="30dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/text_size_question"
-        style="@style/cuestionStyle"
         android:visibility="visible" />
 
     <TextView

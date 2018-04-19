@@ -45,7 +45,7 @@ public class CatalogoTablas extends Fragment implements IAdapterComunication {
 
         if(BuildConfig.DEBUG){
             adRequest = new AdRequest.Builder()
-                    .addTestDevice("E6D875D21E5D7044F76A3C6603BC25D6")//Lo
+                    .addTestDevice("C79063870167F0917969F257CD70A642")//Lo
                     .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")//Mi
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                     .addTestDevice("04675459C2BE09CF506EDD1002143111")//Genymotion tablet
@@ -68,7 +68,7 @@ public class CatalogoTablas extends Fragment implements IAdapterComunication {
 
         if(BuildConfig.DEBUG){
             adRequestI = new AdRequest.Builder()
-                    .addTestDevice("E6D875D21E5D7044F76A3C6603BC25D6")//Lo
+                    .addTestDevice("C79063870167F0917969F257CD70A642")//Lo
                     .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")//Mi
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                     .addTestDevice("04675459C2BE09CF506EDD1002143111")//Genymotion tablet

@@ -54,6 +54,7 @@ public class PlaceholderFragment extends Fragment
      * Spiner que contiene la seleccion de la dificultad
      */
     private Spinner spinnerNivel;
+    private Button game3;
 
     /**
      * Returns a new instance of this fragment for the given section number.
@@ -83,7 +84,7 @@ public class PlaceholderFragment extends Fragment
 
         if(BuildConfig.DEBUG){
             adRequestI = new AdRequest.Builder()
-                    .addTestDevice("E6D875D21E5D7044F76A3C6603BC25D6")//Lo
+                    .addTestDevice("C79063870167F0917969F257CD70A642")//Lo
                     .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")//Mi
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                     .addTestDevice("04675459C2BE09CF506EDD1002143111")//Genymotion tablet
@@ -117,12 +118,15 @@ public class PlaceholderFragment extends Fragment
         // Specify the layout to use when the list of choices appears
         adapterSpiner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
+
         spinnerNivel.setAdapter(adapterSpiner);
+        spinnerNivel.setSelection(adapterSpiner.getPosition(getString(R.string.Normal)));
 
         listView = (ListView) rootView.findViewById( R.id.listView );
 
         j1 = (Button) rootView.findViewById( R.id.buttonj1 );
         j2 = (Button) rootView.findViewById( R.id.buttonj2 );
+        game3 = (Button) rootView.findViewById( R.id.butGame3 );
         j2.setOnClickListener( new OnClickListener( )
         {
             @Override
@@ -142,6 +146,14 @@ public class PlaceholderFragment extends Fragment
                 iniciarJuego();
             }
         } );
+
+        game3.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                juego = 3;
+                iniciarJuego();
+            }
+        });
 
         String[] values = new String[] {"Todas las tablas", "Tabla del 1", "Tabla del 2", "Tabla del 3", "Tabla del 4", "Tabla del 5",
                 "Tabla del 6", "Tabla del 7", "Tabla del 8", "Tabla del 9", "Tabla del 10" };
@@ -200,6 +212,9 @@ public class PlaceholderFragment extends Fragment
             case 2:
                 intent = new Intent( getActivity( ), GameActivity2.class);
                 break;
+            case 3:
+                intent = new Intent(getActivity(), TapGame.class);
+                break;
             default:
                 intent = new Intent( getActivity( ), GameActivity.class);
                 break;
@@ -223,6 +238,7 @@ public class PlaceholderFragment extends Fragment
             textNivel.setVisibility( TextView.GONE );
             j1.setVisibility( Button.GONE );
             j2.setVisibility( Button.GONE );
+            game3.setVisibility( Button.GONE );
             spinnerNivel.setVisibility(Spinner.GONE);
             layout.setBackgroundResource(R.drawable.tablas);
             pantallaPrincipal = true;
@@ -233,6 +249,7 @@ public class PlaceholderFragment extends Fragment
             textNivel.setVisibility( TextView.VISIBLE );
             j1.setVisibility( Button.VISIBLE );
             j2.setVisibility( Button.VISIBLE );
+            game3.setVisibility( Button.VISIBLE );
             spinnerNivel.setVisibility(Spinner.VISIBLE);
             layout.setBackgroundResource(R.drawable.tablas_opaca);
             pantallaPrincipal = false;
