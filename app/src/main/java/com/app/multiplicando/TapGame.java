@@ -1,5 +1,6 @@
 package com.app.multiplicando;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.app.multiplicando.ads.NativeAdActivity;
 
 import java.util.Random;
 
@@ -35,6 +37,10 @@ public class TapGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tap_game);
+
+        //Intent intent = new Intent( TapGame.this, NativeAdActivity.class);
+        //startActivity(intent);
+
         initializeControls();
 
         butStartGame.setOnClickListener(new View.OnClickListener() {
@@ -172,24 +178,24 @@ public class TapGame extends AppCompatActivity {
     }
 
     private void initializeControls() {
-        tvPlayer11 = (TextView) findViewById(R.id.tvAnswer1Player1);
-        tvPlayer12 = (TextView) findViewById(R.id.tvAnswer1Player2);
-        tvPlayer21 = (TextView) findViewById(R.id.tvAnswer2Player1);
-        tvPlayer22 = (TextView) findViewById(R.id.tvAnswer2Player2);
+        tvPlayer11 = findViewById(R.id.tvAnswer1Player1);
+        tvPlayer12 = findViewById(R.id.tvAnswer1Player2);
+        tvPlayer21 = findViewById(R.id.tvAnswer2Player1);
+        tvPlayer22 = findViewById(R.id.tvAnswer2Player2);
 
-        tvQuestion = (TextView) findViewById(R.id.tvQuestion);
-        tvQuestion2 = (TextView) findViewById(R.id.tvQuestion2);
+        tvQuestion = findViewById(R.id.tvQuestion);
+        tvQuestion2 = findViewById(R.id.tvQuestion2);
 
-        tvScorePlayer1 = (TextView) findViewById(R.id.tvScorePlayer1);
-        tvScorePlayer2 = (TextView) findViewById(R.id.tvScorePlayer2);
+        tvScorePlayer1 = findViewById(R.id.tvScorePlayer1);
+        tvScorePlayer2 = findViewById(R.id.tvScorePlayer2);
 
-        animationPlayer1 = (LottieAnimationView) findViewById(R.id.animationPlayer1);
-        animationPlayer2 = (LottieAnimationView) findViewById(R.id.animationPlayer2);
+        animationPlayer1 = findViewById(R.id.animationPlayer1);
+        animationPlayer2 = findViewById(R.id.animationPlayer2);
 
         animationPlayer1.setAnimation(R.raw.star2);
         animationPlayer2.setAnimation(R.raw.star2);
 
-        butStartGame = (LottieAnimationView) findViewById(R.id.butStart);
+        butStartGame = findViewById(R.id.butStart);
 
         random = new Random();
     }

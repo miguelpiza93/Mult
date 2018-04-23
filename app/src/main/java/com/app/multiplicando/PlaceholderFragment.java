@@ -224,10 +224,10 @@ public class PlaceholderFragment extends Fragment
         startActivity( intent );
         //	getActivity( ).finish( );
 
-        if (interstitial.isLoaded())
+        /**if (interstitial.isLoaded())
         {
             interstitial.show();
-        }
+        }**/
     }
 
     public void cambiarPantallaPrincipal(boolean mostrarInicial){
