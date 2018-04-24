@@ -17,5 +17,6 @@
     <string name="banner_catalogo_tablas">ca-app-pub-6455142835794611/9291470280</string>
     <string name="intersticial">ca-app-pub-6455142835794611/8086618689</string>
     <string name="ad_attribution">Ad</string>
+    <string name="instruction_multiplayer">Selecciona la respuesta correcta antes que tu oponente</string>
 
 </resources>

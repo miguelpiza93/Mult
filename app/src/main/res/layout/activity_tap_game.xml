@@ -7,26 +7,16 @@
     android:background="@drawable/background_juego"
     tools:context="com.app.multiplicando.TapGame">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/butStart"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:rotation="90"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/play_button" />
-
     <TextView
         android:id="@+id/tvQuestion"
         style="@style/cuestionStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/madera"
+        android:gravity="center_horizontal"
         android:textSize="@dimen/text_size_question"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/butStart"
@@ -37,32 +27,23 @@
         style="@style/cuestionStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/madera"
         android:freezesText="false"
+        android:gravity="center_horizontal"
         android:rotation="180"
         android:textSize="@dimen/text_size_question"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/butStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="2 x 3" />
 
-    <TextView
-        android:id="@+id/tvScorePlayer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginTop="12dp"
-        android:text="0"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/score_multiplayer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/butStart" />
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationPlayer1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/star_animation_size"
+        android:layout_height="@dimen/star_animation_size"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -71,60 +52,84 @@
         app:lottie_loop="false"
         app:lottie_rawRes="@raw/start" />
 
+    <TextView
+        android:id="@+id/tvScorePlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/score_multiplayer"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/animationPlayer1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/animationPlayer1"
+        app:layout_constraintTop_toTopOf="@+id/animationPlayer1" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationPlayer2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/star_animation_size"
+        android:layout_height="@dimen/star_animation_size"
+        android:layout_marginStart="-10dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.341"
         app:lottie_autoPlay="true"
         app:lottie_loop="false"
-        app:lottie_rawRes="@raw/start" />
+        app:lottie_rawRes="@raw/start"
+        android:layout_marginLeft="-10dp" />
 
     <TextView
         android:id="@+id/tvScorePlayer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
         android:rotation="180"
         android:text="0"
         android:textColor="@android:color/black"
         android:textSize="@dimen/score_multiplayer"
-        app:layout_constraintBottom_toTopOf="@+id/butStart"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/animationPlayer2"
+        app:layout_constraintEnd_toEndOf="@+id/animationPlayer2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/animationPlayer2" />
 
     <TextView
         android:id="@+id/tvAnswer1Player1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-        android:layout_marginLeft="60dp"
         android:layout_marginStart="60dp"
         android:background="@drawable/piedra"
+        android:gravity="center"
+        android:padding="12dp"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/answer_multiplayer"
+        android:textSize="@dimen/text_size_piedra"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="60dp" />
 
     <TextView
         android:id="@+id/tvAnswer1Player2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/piedra"
+        android:gravity="center"
+        android:padding="12dp"
         android:rotation="180"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/answer_multiplayer"
+        android:textSize="@dimen/text_size_piedra"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="60dp" />
 
     <TextView
         android:id="@+id/tvAnswer2Player1"
@@ -132,26 +137,101 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
         android:background="@drawable/piedra"
+        android:gravity="center"
+        android:padding="12dp"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/answer_multiplayer"
+        android:textSize="@dimen/text_size_piedra"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="12"
+        android:layout_marginRight="60dp" />
 
     <TextView
         android:id="@+id/tvAnswer2Player2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/piedra"
+        android:gravity="center"
+        android:padding="12dp"
         android:rotation="180"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/answer_multiplayer"
+        android:textSize="@dimen/text_size_piedra"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="60dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/butStart"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/play_button" />
+
+    <TextView
+        android:id="@+id/tvInstruction2"
+        style="@style/cuestionStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:gravity="center_horizontal"
+        android:rotation="180"
+        android:text="@string/instruction_multiplayer"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/butStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvInstruction"
+        style="@style/cuestionStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:gravity="center_horizontal"
+        android:text="@string/instruction_multiplayer"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/butStart" />
+
+    <Button
+        android:id="@+id/butPause"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/pause"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

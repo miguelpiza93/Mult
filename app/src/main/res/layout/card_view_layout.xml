@@ -1,38 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="3dp"
+    android:layout_marginTop="3dp"
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        card_view:cardCornerRadius="4dp"
-        card_view:cardElevation="4dp"
-        card_view:cardUseCompatPadding="true"
-        card_view:cardPreventCornerOverlap="false"
-        android:layout_marginRight="@dimen/margin_catalogo"
-        android:layout_marginLeft="@dimen/margin_catalogo"
-        card_view:cardBackgroundColor="@android:color/transparent">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/madera">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
-                android:id="@+id/nombre"
-                android:textColor="@color/white"
-                android:layout_alignParentTop="true"
-                android:paddingTop="17dp"
-                android:layout_centerHorizontal="true"/>
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
+    <TextView
+        android:id="@+id/nombre"
+        style="@style/cuestionStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/madera"
+        android:gravity="center_horizontal"
+        android:paddingTop="17dp"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
 </LinearLayout>
