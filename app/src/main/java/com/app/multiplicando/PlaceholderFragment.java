@@ -3,28 +3,21 @@ package com.app.multiplicando;
 //import com.google.android.gms.ads.*;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -32,8 +25,7 @@ import com.google.android.gms.ads.InterstitialAd;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class PlaceholderFragment extends Fragment
-{
+public class PlaceholderFragment extends Fragment {
     private int nivel;
     private Bundle b;
     private static InterstitialAd interstitial;
@@ -59,30 +51,27 @@ public class PlaceholderFragment extends Fragment
     /**
      * Returns a new instance of this fragment for the given section number.
      */
-    public static PlaceholderFragment newInstance( )
-    {
-        return new PlaceholderFragment( );
+    public static PlaceholderFragment newInstance() {
+        return new PlaceholderFragment();
     }
 
-    public PlaceholderFragment(  )
-    {
+    public PlaceholderFragment() {
 
     }
 
     @Override
-    public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState )
-    {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View rootView = inflater.inflate( R.layout.fragment_main, container, false );
+        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         // Create the interstitial.
-        interstitial = new InterstitialAd( getActivity( ) );
+        interstitial = new InterstitialAd(getActivity());
         interstitial.setAdUnitId("ca-app-pub-6455142835794611/5671550288");
 
         // Create ad request.
         AdRequest adRequestI;
 
-        if(BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG) {
             adRequestI = new AdRequest.Builder()
                     .addTestDevice("C79063870167F0917969F257CD70A642")//Lo
                     .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")//Mi
@@ -90,8 +79,7 @@ public class PlaceholderFragment extends Fragment
                     .addTestDevice("04675459C2BE09CF506EDD1002143111")//Genymotion tablet
                     .addTestDevice("2911693A4370B61588F14C331189465F")//Nexus one
                     .build();
-        }
-        else{
+        } else {
             adRequestI = new AdRequest.Builder()
                     .build();
         }
@@ -101,19 +89,19 @@ public class PlaceholderFragment extends Fragment
 
         pantallaPrincipal = true;
 
-        spinnerNivel = (Spinner) rootView.findViewById(R.id.nivel_spinner);
+        spinnerNivel = rootView.findViewById(R.id.nivel_spinner);
 
-        b = new Bundle( );
+        b = new Bundle();
 
-        text = (TextView)rootView.findViewById( R.id.txt_Menu );
-        Typeface typeface = Typeface.createFromAsset( getActivity( ).getAssets( ), "fonts/homeheart.ttf" );
-        text.setTypeface( typeface );
+        text = rootView.findViewById(R.id.txt_Menu);
+        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/homeheart.ttf");
+        text.setTypeface(typeface);
 
-        textNivel = (TextView)rootView.findViewById( R.id.text_Nivel );
-        textNivel.setTypeface( typeface );
+        textNivel = rootView.findViewById(R.id.text_Nivel);
+        textNivel.setTypeface(typeface);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapterSpiner = ArrayAdapter.createFromResource(getActivity( ),
+        ArrayAdapter<CharSequence> adapterSpiner = ArrayAdapter.createFromResource(getActivity(),
                 R.array.nivel_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapterSpiner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -122,30 +110,26 @@ public class PlaceholderFragment extends Fragment
         spinnerNivel.setAdapter(adapterSpiner);
         spinnerNivel.setSelection(adapterSpiner.getPosition(getString(R.string.Normal)));
 
-        listView = (ListView) rootView.findViewById( R.id.listView );
+        listView = rootView.findViewById(R.id.listView);
 
-        j1 = (Button) rootView.findViewById( R.id.buttonj1 );
-        j2 = (Button) rootView.findViewById( R.id.buttonj2 );
-        game3 = (Button) rootView.findViewById( R.id.butGame3 );
-        j2.setOnClickListener( new OnClickListener( )
-        {
+        j1 = rootView.findViewById(R.id.buttonj1);
+        j2 = rootView.findViewById(R.id.buttonj2);
+        game3 = rootView.findViewById(R.id.butGame3);
+        j2.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick( View arg0 )
-            {
+            public void onClick(View arg0) {
                 juego = 2;
                 iniciarJuego();
             }
-        } );
+        });
 
-        j1.setOnClickListener( new OnClickListener( )
-        {
+        j1.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick( View arg0 )
-            {
+            public void onClick(View arg0) {
                 juego = 1;
                 iniciarJuego();
             }
-        } );
+        });
 
         game3.setOnClickListener(new OnClickListener() {
             @Override
@@ -155,8 +139,8 @@ public class PlaceholderFragment extends Fragment
             }
         });
 
-        String[] values = new String[] {"Todas las tablas", "Tabla del 1", "Tabla del 2", "Tabla del 3", "Tabla del 4", "Tabla del 5",
-                "Tabla del 6", "Tabla del 7", "Tabla del 8", "Tabla del 9", "Tabla del 10" };
+        String[] values = new String[]{"Todas las tablas", "Tabla del 1", "Tabla del 2", "Tabla del 3", "Tabla del 4", "Tabla del 5",
+                "Tabla del 6", "Tabla del 7", "Tabla del 8", "Tabla del 9", "Tabla del 10"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, values);
@@ -177,14 +161,12 @@ public class PlaceholderFragment extends Fragment
         };*/
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new OnItemClickListener()
-        {
+        listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // ListView Clicked item index
                 int tabla = position == 0 ? -1 : position; //-1 = todas las tablas
-                b.putInt( "Tabla", tabla );
+                b.putInt("Tabla", tabla);
                 cambiarPantallaPrincipal(false);
             }
         });
@@ -192,71 +174,67 @@ public class PlaceholderFragment extends Fragment
         return rootView;
     }
 
-    private void iniciarJuego(){
+    private void iniciarJuego() {
         String nivelSel = spinnerNivel.getSelectedItem().toString();
-        if (nivelSel.equals(getString(R.string.SinTiempo))){
+        if (nivelSel.equals(getString(R.string.SinTiempo))) {
             nivel = 0;
-        }
-        else if(nivelSel.equals(getString(R.string.Aprendiz))){
+        } else if (nivelSel.equals(getString(R.string.Aprendiz))) {
             nivel = 1;
-        }
-        else if(nivelSel.equals(getString(R.string.Normal))){
+        } else if (nivelSel.equals(getString(R.string.Normal))) {
             nivel = 2;
-        }
-        else{
+        } else {
             nivel = 3;
         }
 
         Intent intent;
         switch (juego) {
             case 2:
-                intent = new Intent( getActivity( ), GameActivity2.class);
+                intent = new Intent(getActivity(), GameActivity2.class);
                 break;
             case 3:
                 intent = new Intent(getActivity(), TapGame.class);
                 break;
             default:
-                intent = new Intent( getActivity( ), GameActivity.class);
+                intent = new Intent(getActivity(), GameActivity.class);
                 break;
         }
-        b.putInt( "Nivel", nivel );
-        intent.putExtras( b );
-        startActivity( intent );
+        b.putInt("Nivel", nivel);
+        intent.putExtras(b);
+        startActivity(intent);
         //	getActivity( ).finish( );
 
         /**if (interstitial.isLoaded())
-        {
-            interstitial.show();
-        }**/
+         {
+         interstitial.show();
+         }**/
     }
 
-    public void cambiarPantallaPrincipal(boolean mostrarInicial){
-        LinearLayout layout=(LinearLayout)getActivity().findViewById(R.id.mainLayout);
-        if(mostrarInicial){
-            listView.setVisibility( ListView.VISIBLE );
-            text.setVisibility( TextView.VISIBLE );
-            textNivel.setVisibility( TextView.GONE );
-            j1.setVisibility( Button.GONE );
-            j2.setVisibility( Button.GONE );
-            game3.setVisibility( Button.GONE );
+    public void cambiarPantallaPrincipal(boolean mostrarInicial) {
+        LinearLayout layout = (LinearLayout) getActivity().findViewById(R.id.mainLayout);
+        if (mostrarInicial) {
+            listView.setVisibility(ListView.VISIBLE);
+            text.setVisibility(TextView.VISIBLE);
+            textNivel.setVisibility(TextView.GONE);
+            j1.setVisibility(Button.GONE);
+            j2.setVisibility(Button.GONE);
+            game3.setVisibility(Button.GONE);
             spinnerNivel.setVisibility(Spinner.GONE);
             layout.setBackgroundResource(R.drawable.tablas);
             pantallaPrincipal = true;
-        }
-        else{
-            listView.setVisibility( ListView.GONE );
-            text.setVisibility( TextView.GONE );
-            textNivel.setVisibility( TextView.VISIBLE );
-            j1.setVisibility( Button.VISIBLE );
-            j2.setVisibility( Button.VISIBLE );
-            game3.setVisibility( Button.VISIBLE );
+        } else {
+            listView.setVisibility(ListView.GONE);
+            text.setVisibility(TextView.GONE);
+            textNivel.setVisibility(TextView.VISIBLE);
+            j1.setVisibility(Button.VISIBLE);
+            j2.setVisibility(Button.VISIBLE);
+            game3.setVisibility(Button.VISIBLE);
             spinnerNivel.setVisibility(Spinner.VISIBLE);
             layout.setBackgroundResource(R.drawable.tablas_opaca);
             pantallaPrincipal = false;
         }
     }
 
-    public boolean isInHome(){
+    public boolean isInHome() {
         return pantallaPrincipal;
     }
 }

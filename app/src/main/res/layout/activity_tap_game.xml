@@ -181,17 +181,95 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/butStart"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <ImageView
+        android:id="@+id/tvBanana1Player1"
+        android:layout_width="@dimen/banana_score_size"
+        android:layout_height="@dimen/banana_score_size"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/banana"
+        android:layout_marginLeft="8dp" />
+
+    <ImageView
+        android:id="@+id/tvBanana2Player1"
+        android:layout_width="@dimen/banana_score_size"
+        android:layout_height="@dimen/banana_score_size"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/tvBanana1Player1"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/banana"
+        android:layout_marginLeft="8dp" />
+
+    <ImageView
+        android:id="@+id/tvBanana3Player1"
+        android:layout_width="@dimen/banana_score_size"
+        android:layout_height="@dimen/banana_score_size"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/tvBanana2Player1"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/banana"
+        android:layout_marginLeft="8dp" />
+
+    <ImageView
+        android:id="@+id/tvBanana1Player2"
+        android:layout_width="@dimen/banana_score_size"
+        android:layout_height="@dimen/banana_score_size"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:rotation="180"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/banana"
+        android:layout_marginRight="8dp" />
+
+    <ImageView
+        android:id="@+id/tvBanana2Player2"
+        android:layout_width="@dimen/banana_score_size"
+        android:layout_height="@dimen/banana_score_size"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:rotation="180"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/tvBanana1Player2"
+        app:srcCompat="@drawable/banana"
+        android:layout_marginRight="8dp" />
+
+    <ImageView
+        android:id="@+id/tvBanana3Player2"
+        android:layout_width="@dimen/banana_score_size"
+        android:layout_height="@dimen/banana_score_size"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:rotation="180"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/tvBanana2Player2"
+        app:srcCompat="@drawable/banana"
+        android:layout_marginRight="8dp" />
+
+    <TextView
+        android:id="@+id/tvInstruction"
+        style="@style/cuestionStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:gravity="center_horizontal"
+        android:text="@string/instruction_multiplayer"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/play_button" />
+        app:layout_constraintTop_toBottomOf="@+id/butStart" />
 
     <TextView
         android:id="@+id/tvInstruction2"
@@ -209,20 +287,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvInstruction"
-        style="@style/cuestionStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:gravity="center_horizontal"
-        android:text="@string/instruction_multiplayer"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationFinal"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/butStart" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/trophy" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationFinal2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="32dp"
+        android:rotation="180"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/trophy" />
 
     <Button
         android:id="@+id/butPause"
@@ -234,4 +324,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/butStart"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/play_button" />
+
 </android.support.constraint.ConstraintLayout>

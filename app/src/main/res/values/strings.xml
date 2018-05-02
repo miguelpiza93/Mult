@@ -18,5 +18,22 @@
     <string name="intersticial">ca-app-pub-6455142835794611/8086618689</string>
     <string name="ad_attribution">Ad</string>
     <string name="instruction_multiplayer">Selecciona la respuesta correcta antes que tu oponente</string>
+    <string name="play_again">¿Jugar otra vez?</string>
+    <string name="win">GANASTE</string>
+    <string name="tabla_practice">
+        mul x 1 = __\n
+        mul x 2 = __\n
+        mul x 3 = __\n
+        mul x 4 = __\n
+        mul x 5 = __\n
+        mul x 6 = __\n
+        mul x 7 = __\n
+        mul x 8 = __\n
+        mul x 9 = __\n
+        mul x 10 = __\n
+    </string>
+    <string name="table_title">Tabla del %s</string>
+    <string name="listo">¿Listo?</string>
+
 
 </resources>

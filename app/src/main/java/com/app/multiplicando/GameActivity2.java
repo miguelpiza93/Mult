@@ -1,8 +1,5 @@
 package com.app.multiplicando;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +15,9 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class GameActivity2 extends Activity
 {

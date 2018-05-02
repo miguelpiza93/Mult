@@ -22,4 +22,5 @@
     <dimen name="question_multiplayer">48sp</dimen>
     <dimen name="score_multiplayer">18sp</dimen>
     <dimen name="answer_multiplayer">36sp</dimen>
+    <dimen name="banana_score_size">30dp</dimen>
 </resources>

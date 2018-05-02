@@ -1,17 +1,20 @@
 package com.app.multiplicando;
 
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class TapGame extends AppCompatActivity {
@@ -39,6 +42,16 @@ public class TapGame extends AppCompatActivity {
     private Button butPauseGame;
     private boolean validatingResponse;
     private MediaPlayer sound;
+    private ImageView tvRemainingLives31;
+    private ImageView tvRemainingLives21;
+    private ImageView tvRemainingLives11;
+    private ImageView tvRemainingLives32;
+    private ImageView tvRemainingLives22;
+    private ImageView tvRemainingLives12;
+    private List<ImageView> remainingLivesPlayer1;
+    private List<ImageView> remainingLivesPlayer2;
+    private LottieAnimationView animationFinish;
+    private LottieAnimationView animationFinish2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +116,7 @@ public class TapGame extends AppCompatActivity {
     }
 
     private void validateAnswer(int answer, int player) {
-        if(!validatingResponse) {
+        if (!validatingResponse) {
             validatingResponse = true;
             if (correctAnswer == answer) {
                 if (player == PLAYER_1) {
@@ -118,7 +131,7 @@ public class TapGame extends AppCompatActivity {
                     score++;
                     tvScorePlayer2.setText("" + score);
                 }
-                if( sound != null ) {
+                if (sound != null) {
                     sound.start();
                 }
 
@@ -137,16 +150,58 @@ public class TapGame extends AppCompatActivity {
                         score--;
                     }
                     tvScorePlayer1.setText("" + score);
+
+                    ImageView image = remainingLivesPlayer1.get(remainingLivesPlayer1.size() - 1);
+                    image.setImageResource(R.drawable.peel);
+                    remainingLivesPlayer1.remove(remainingLivesPlayer1.size() - 1);
+
+                    if (remainingLivesPlayer1.isEmpty()) {
+                        endGame(PLAYER_1);
+                    }
+
                 } else {
                     int score = Integer.parseInt(tvScorePlayer2.getText().toString());
                     if (score > 0) {
                         score--;
                     }
                     tvScorePlayer2.setText("" + score);
+
+                    ImageView image = remainingLivesPlayer2.get(remainingLivesPlayer2.size() - 1);
+                    image.setImageResource(R.drawable.peel);
+                    remainingLivesPlayer2.remove(remainingLivesPlayer2.size() - 1);
+
+                    if (remainingLivesPlayer2.isEmpty()) {
+                        endGame(PLAYER_2);
+                    }
+
+
                 }
                 validatingResponse = false;
             }
         }
+    }
+
+    private void endGame(int player1) {
+        switch (player1) {
+            case PLAYER_1:
+                tvInstruction.setText(R.string.play_again);
+                tvInstruction2.setText(R.string.win);
+                animationFinish2 = findViewById(R.id.animationFinal2);
+                animationFinish2.setVisibility(View.VISIBLE);
+                animationFinish2.playAnimation();
+                break;
+            case PLAYER_2:
+                tvInstruction2.setText(R.string.play_again);
+                tvInstruction.setText(R.string.win);
+                animationFinish = findViewById(R.id.animationFinal);
+                animationFinish.setVisibility(View.VISIBLE);
+                animationFinish.playAnimation();
+                break;
+            default:
+                break;
+        }
+        showWidgets(false);
+        initializeRemainingLives();
     }
 
     private void showQuestion() {
@@ -228,7 +283,41 @@ public class TapGame extends AppCompatActivity {
         butPauseGame = findViewById(R.id.butPause);
 
         random = new Random();
-        sound = MediaPlayer.create( this, R.raw.star_sound );
+        sound = MediaPlayer.create(this, R.raw.star_sound);
+
+        tvRemainingLives31 = findViewById(R.id.tvBanana3Player1);
+        tvRemainingLives21 = findViewById(R.id.tvBanana2Player1);
+        tvRemainingLives11 = findViewById(R.id.tvBanana1Player1);
+
+        tvRemainingLives32 = findViewById(R.id.tvBanana3Player2);
+        tvRemainingLives22 = findViewById(R.id.tvBanana2Player2);
+        tvRemainingLives12 = findViewById(R.id.tvBanana1Player2);
+
+        initializeRemainingLives();
+    }
+
+    private void initializeRemainingLives() {
+
+        tvRemainingLives31.setImageResource(R.drawable.banana);
+        tvRemainingLives21.setImageResource(R.drawable.banana);
+        tvRemainingLives11.setImageResource(R.drawable.banana);
+
+        tvRemainingLives32.setImageResource(R.drawable.banana);
+        tvRemainingLives22.setImageResource(R.drawable.banana);
+        tvRemainingLives12.setImageResource(R.drawable.banana);
+
+        remainingLivesPlayer1 = new ArrayList<>();
+        remainingLivesPlayer1.add(tvRemainingLives11);
+        remainingLivesPlayer1.add(tvRemainingLives21);
+        remainingLivesPlayer1.add(tvRemainingLives31);
+
+        remainingLivesPlayer2 = new ArrayList<>();
+        remainingLivesPlayer2.add(tvRemainingLives12);
+        remainingLivesPlayer2.add(tvRemainingLives22);
+        remainingLivesPlayer2.add(tvRemainingLives32);
+
+        tvScorePlayer1.setText(""+0);
+        tvScorePlayer2.setText(""+0);
     }
 
     private void showWidgets(boolean visible) {
@@ -253,6 +342,28 @@ public class TapGame extends AppCompatActivity {
 
             butPauseGame.setVisibility(View.VISIBLE);
             butStartGame.setVisibility(View.INVISIBLE);
+
+            //show remaining lives
+            tvRemainingLives31.setVisibility(View.VISIBLE);
+            tvRemainingLives21.setVisibility(View.VISIBLE);
+            tvRemainingLives11.setVisibility(View.VISIBLE);
+
+            tvRemainingLives32.setVisibility(View.VISIBLE);
+            tvRemainingLives22.setVisibility(View.VISIBLE);
+            tvRemainingLives12.setVisibility(View.VISIBLE);
+
+
+            if (animationFinish != null) {
+                animationFinish.setVisibility(View.INVISIBLE);
+            }
+
+            if (animationFinish2 != null) {
+                animationFinish2.setVisibility(View.INVISIBLE);
+            }
+            tvInstruction.setText(R.string.instruction_multiplayer);
+            tvInstruction2.setText(R.string.instruction_multiplayer);
+
+
         } else {
             tvPlayer11.setVisibility(View.INVISIBLE);
             tvPlayer12.setVisibility(View.INVISIBLE);
@@ -268,13 +379,23 @@ public class TapGame extends AppCompatActivity {
             animationPlayer1.setVisibility(View.INVISIBLE);
             animationPlayer2.setVisibility(View.INVISIBLE);
 
-            //Hide instructions
+            //Show instructions
             tvInstruction.setVisibility(View.VISIBLE);
             tvInstruction2.setVisibility(View.VISIBLE);
 
             butPauseGame.setVisibility(View.INVISIBLE);
             butStartGame.setVisibility(View.VISIBLE);
             butStartGame.playAnimation();
+
+            //Hide remaining lives
+            tvRemainingLives31.setVisibility(View.INVISIBLE);
+            tvRemainingLives21.setVisibility(View.INVISIBLE);
+            tvRemainingLives11.setVisibility(View.INVISIBLE);
+
+            tvRemainingLives32.setVisibility(View.INVISIBLE);
+            tvRemainingLives22.setVisibility(View.INVISIBLE);
+            tvRemainingLives12.setVisibility(View.INVISIBLE);
+
         }
     }
 }
