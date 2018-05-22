@@ -4,7 +4,7 @@
     <string name="app_name">Multiplicando</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_game">Multiplicando</string>
-    <string name="menu">¿Con qué tabla quieres practicar?</string>
+    <string name="menu">¿Con qué tabla quieres jugar?</string>
     <string name="nivel">Escoge la dificultad</string>
     <string name="SinTiempo">Sin Tiempo</string>
     <string name="Aprendiz">Aprendiz</string>
@@ -19,7 +19,7 @@
     <string name="ad_attribution">Ad</string>
     <string name="instruction_multiplayer">Selecciona la respuesta correcta antes que tu oponente</string>
     <string name="play_again">¿Jugar otra vez?</string>
-    <string name="win">GANASTE</string>
+    <string name="win">¡¡¡GANASTE!!!</string>
     <string name="tabla_practice">
         mul x 1 = __\n
         mul x 2 = __\n
@@ -34,6 +34,10 @@
     </string>
     <string name="table_title">Tabla del %s</string>
     <string name="listo">¿Listo?</string>
+    <string name="result">Tu puntaje es:</string>
+    <string name="game_one_name">Juego 1</string>
+    <string name="game_two_name">Juego 2</string>
+    <string name="game_three_name">Multijugador</string>
 
 
 </resources>

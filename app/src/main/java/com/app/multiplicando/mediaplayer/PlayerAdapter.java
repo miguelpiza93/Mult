@@ -18,8 +18,6 @@ public interface PlayerAdapter {
 
     void pause();
 
-    void initializeProgressCallback();
-
     void seekTo(int position);
 
     void addQueue(int resId);

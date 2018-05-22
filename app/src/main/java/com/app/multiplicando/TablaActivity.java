@@ -7,6 +7,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -40,7 +41,6 @@ public class TablaActivity extends AppCompatActivity {
     private boolean mUserIsSeeking;
 
     private boolean pausePractice;
-    private boolean changePractice;
     private int actualNumber;
     private Timer timer;
     private TimerTask timerTask;
@@ -48,6 +48,7 @@ public class TablaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_tabla);
 
         System.gc();
@@ -64,10 +65,11 @@ public class TablaActivity extends AppCompatActivity {
                 changeTable();
                 if (isPracticing) {
                     changeTablePractice();
-                    timer.cancel();
-                    actualNumber = 1;
-                    loadMedia();
-                    initializeTimer();
+                    if (!pausePractice) {
+                        timer.cancel();
+                        mPlayerAdapter.reset();
+                        initializeSound();
+                    }
                 }
             }
         });
@@ -79,10 +81,11 @@ public class TablaActivity extends AppCompatActivity {
                 changeTable();
                 if (isPracticing) {
                     changeTablePractice();
-                    timer.cancel();
-                    actualNumber = 1;
-                    loadMedia();
-                    initializeTimer();
+                    if (!pausePractice) {
+                        timer.cancel();
+                        mPlayerAdapter.reset();
+                        initializeSound();
+                    }
                 }
             }
         });
@@ -92,9 +95,7 @@ public class TablaActivity extends AppCompatActivity {
                 isPracticing = true;
                 changeVisibilityControls();
                 changeTablePractice();
-                actualNumber = 1;
-                loadMedia();
-                initializeTimer();
+                initializeSound();
             }
         });
 
@@ -111,26 +112,32 @@ public class TablaActivity extends AppCompatActivity {
         butPausePractice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pausePractice = pausePractice? false: true;
-
-                if(pausePractice)
-                {
-                    butPausePractice.setBackgroundResource(R.drawable.play);
-                    mPlayerAdapter.pause();
-                    timer.cancel();
-                }
-                else
-                {
-                    butPausePractice.setBackgroundResource(R.drawable.pause);
-                    loadMedia();
-                    initializeTimer();
-                }
-
+                pausePractice = pausePractice ? false : true;
+                onPausePractice(pausePractice);
             }
         });
 
     }
 
+    private void onPausePractice(boolean pausePractice) {
+        if (pausePractice) {
+            butPausePractice.setBackgroundResource(R.drawable.play);
+            mPlayerAdapter.pause();
+            mPlayerAdapter.release();
+            timer.cancel();
+        } else {
+            butPausePractice.setBackgroundResource(R.drawable.pause);
+            loadMedia();
+            initializeTimer();
+        }
+    }
+
+    private void initializeSound() {
+        actualNumber = 1;
+        seekBar.setProgress(actualNumber);
+        loadMedia();
+        initializeTimer();
+    }
 
     private void initializeTimer() {
         final Handler handler = new Handler();
@@ -152,6 +159,7 @@ public class TablaActivity extends AppCompatActivity {
                         } else {
                             loadMedia();
                         }
+                        seekBar.setProgress(actualNumber);
                     }
                 });
             }
@@ -219,14 +227,7 @@ public class TablaActivity extends AppCompatActivity {
         }
 
         if (!isPracticing) {
-            String tableSource = getString(R.string.tabla_practice);
-            String tableToShow = tableSource.replace("mul", String.valueOf(actualTable));
-            String tableToShowResult = tableToShow;
-            for (int i = 1; i < 11; i++) {
-                tableToShowResult = tableToShow.replaceFirst("__", String.valueOf(actualTable * i));
-                tableToShow = tableToShowResult;
-            }
-
+            String tableToShowResult = initializePracticeTableText(11);
             tvTablePractice.setText(tableToShowResult);
         }
         ConstraintLayout layout = findViewById(R.id.idLayoutTabla);
@@ -235,6 +236,18 @@ public class TablaActivity extends AppCompatActivity {
         tvTitle.setText(title);
 
         evaluateActualTableToDisableButtond();
+    }
+
+    private String initializePracticeTableText(int endIndex) {
+
+        String tableSource = getString(R.string.tabla_practice);
+        String tableToShow = tableSource.replace("mul", String.valueOf(actualTable));
+        String tableToShowResult = tableToShow;
+        for (int i = 1; i < endIndex; i++) {
+            tableToShowResult = tableToShow.replaceFirst("__", String.valueOf(actualTable * i));
+            tableToShow = tableToShowResult;
+        }
+        return tableToShowResult;
     }
 
     private void evaluateActualTableToDisableButtond() {
@@ -251,26 +264,38 @@ public class TablaActivity extends AppCompatActivity {
     }
 
     private void initializeSeekbar() {
+        //seekBar.setMax(10);
         seekBar.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
-                    int userSelectedPosition = 0;
+                    int userSelectedPosition = 1;
 
                     @Override
                     public void onStartTrackingTouch(SeekBar seekBar) {
-                        mUserIsSeeking = true;
                     }
 
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        if (progress == 0) {
+                            progress = 1;
+                            seekBar.setProgress(progress);
+                        }
+
+                        userSelectedPosition = progress;
                         if (fromUser) {
-                            userSelectedPosition = progress;
+                            actualNumber = progress;
+                            String tableToShowResult = initializePracticeTableText(progress);
+                            tvTablePractice.setText(tableToShowResult);
+                            timer.cancel();
+                            mPlayerAdapter.reset();
+                            if (!pausePractice) {
+                                loadMedia();
+                                initializeTimer();
+                            }
                         }
                     }
 
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
-                        mUserIsSeeking = false;
-                        mPlayerAdapter.seekTo(userSelectedPosition);
                     }
                 });
     }
@@ -296,8 +321,18 @@ public class TablaActivity extends AppCompatActivity {
             Log.d(TAG, "onStop: don't release MediaPlayer as screen is rotating & playing");
         } else {
             mPlayerAdapter.release();
+            if (timer != null) {
+                timer.cancel();
+            }
             Log.d(TAG, "onStop: release MediaPlayer");
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        onPausePractice(false);
+        Log.d(TAG, "onRestart");
     }
 
     public class PlaybackListener extends PlaybackInfoListener {
@@ -343,7 +378,9 @@ public class TablaActivity extends AppCompatActivity {
             butPractice.setVisibility(View.VISIBLE);
             butClosePractice.setVisibility(View.INVISIBLE);
             seekBar.setVisibility(View.INVISIBLE);
+            butPausePractice.setBackgroundResource(R.drawable.pause);
             butPausePractice.setVisibility(View.INVISIBLE);
+            pausePractice = false;
         }
     }
 }

@@ -21,8 +21,6 @@ public final class MediaPlayerHolder implements PlayerAdapter {
     private final Context mContext;
     private MediaPlayer mMediaPlayer;
     private PlaybackInfoListener mPlaybackInfoListener;
-    private ScheduledExecutorService mExecutor;
-    private Runnable mSeekbarPositionUpdateTask;
     private Queue<Integer> queue;
 
     public MediaPlayerHolder(Context context) {
@@ -39,13 +37,11 @@ public final class MediaPlayerHolder implements PlayerAdapter {
      */
     private void initializeMediaPlayer() {
 
-
         if (mMediaPlayer == null) {
             mMediaPlayer = new MediaPlayer();
             mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mediaPlayer) {
-                    stopUpdatingCallbackWithPosition(true);
                     logToUI("MediaPlayer playback completed");
 
                     mMediaPlayer.reset();
@@ -74,7 +70,7 @@ public final class MediaPlayerHolder implements PlayerAdapter {
     @Override
     public void loadMedia() {
 
-        initializeProgressCallback();
+        //initializeProgressCallback();
     }
 
     @Override
@@ -82,24 +78,21 @@ public final class MediaPlayerHolder implements PlayerAdapter {
         if (mMediaPlayer != null) {
             logToUI("release() and mMediaPlayer = null");
             mMediaPlayer.release();
+            queue.clear();
             mMediaPlayer = null;
         }
     }
 
     @Override
     public boolean isPlaying() {
-        if (mMediaPlayer != null) {
-            return mMediaPlayer.isPlaying();
-        }
-        return false;
+        return mMediaPlayer != null && mMediaPlayer.isPlaying();
     }
 
     @Override
     public void play(int mResourceId) {
         initializeMediaPlayer();
 
-        AssetFileDescriptor assetFileDescriptor =
-                mContext.getResources().openRawResourceFd(mResourceId);
+        AssetFileDescriptor assetFileDescriptor = mContext.getResources().openRawResourceFd(mResourceId);
         try {
             logToUI("load() {1. setDataSource}-----"+ mMediaPlayer.isPlaying());
             mMediaPlayer.setDataSource(assetFileDescriptor.getFileDescriptor(), assetFileDescriptor.getStartOffset(), assetFileDescriptor.getLength());
@@ -114,9 +107,6 @@ public final class MediaPlayerHolder implements PlayerAdapter {
             logToUI(e.toString());
         }
 
-        initializeProgressCallback();
-        logToUI("initializeProgressCallback()");
-
         if (mMediaPlayer != null && !mMediaPlayer.isPlaying()) {
             logToUI(String.format("playbackStart() %s",
                     mContext.getResources().getResourceEntryName(mResourceId)));
@@ -124,7 +114,6 @@ public final class MediaPlayerHolder implements PlayerAdapter {
             if (mPlaybackInfoListener != null) {
                 mPlaybackInfoListener.onStateChanged(PlaybackInfoListener.State.PLAYING);
             }
-            startUpdatingCallbackWithPosition();
         }
     }
 
@@ -133,11 +122,10 @@ public final class MediaPlayerHolder implements PlayerAdapter {
         if (mMediaPlayer != null) {
             logToUI("playbackReset()");
             mMediaPlayer.reset();
-            loadMedia();
+            queue.clear();
             if (mPlaybackInfoListener != null) {
                 mPlaybackInfoListener.onStateChanged(PlaybackInfoListener.State.RESET);
             }
-            stopUpdatingCallbackWithPosition(true);
         }
     }
 
@@ -145,6 +133,7 @@ public final class MediaPlayerHolder implements PlayerAdapter {
     public void pause() {
         if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
             mMediaPlayer.pause();
+            queue.clear();
             if (mPlaybackInfoListener != null) {
                 mPlaybackInfoListener.onStateChanged(PlaybackInfoListener.State.PAUSED);
             }
@@ -163,62 +152,6 @@ public final class MediaPlayerHolder implements PlayerAdapter {
     @Override
     public void addQueue(int resId) {
         queue.add(resId);
-    }
-
-    /**
-     * Syncs the mMediaPlayer position with mPlaybackProgressCallback via recurring task.
-     */
-    private void startUpdatingCallbackWithPosition() {
-        if (mExecutor == null) {
-            mExecutor = Executors.newSingleThreadScheduledExecutor();
-        }
-        if (mSeekbarPositionUpdateTask == null) {
-            mSeekbarPositionUpdateTask = new Runnable() {
-                @Override
-                public void run() {
-                    updateProgressCallbackTask();
-                }
-            };
-        }
-        mExecutor.scheduleAtFixedRate(
-                mSeekbarPositionUpdateTask,
-                0,
-                PLAYBACK_POSITION_REFRESH_INTERVAL_MS,
-                TimeUnit.MILLISECONDS
-        );
-    }
-
-    // Reports media playback position to mPlaybackProgressCallback.
-    private void stopUpdatingCallbackWithPosition(boolean resetUIPlaybackPosition) {
-        if (mExecutor != null) {
-            mExecutor.shutdownNow();
-            mExecutor = null;
-            mSeekbarPositionUpdateTask = null;
-            if (resetUIPlaybackPosition && mPlaybackInfoListener != null) {
-                mPlaybackInfoListener.onPositionChanged(0);
-            }
-        }
-    }
-
-    private void updateProgressCallbackTask() {
-        if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
-            int currentPosition = mMediaPlayer.getCurrentPosition();
-            if (mPlaybackInfoListener != null) {
-                mPlaybackInfoListener.onPositionChanged(currentPosition);
-            }
-        }
-    }
-
-    @Override
-    public void initializeProgressCallback() {
-        final int duration = mMediaPlayer.getDuration();
-        if (mPlaybackInfoListener != null) {
-            mPlaybackInfoListener.onDurationChanged(duration);
-            mPlaybackInfoListener.onPositionChanged(0);
-            logToUI(String.format("firing setPlaybackDuration(%d sec)",
-                    TimeUnit.MILLISECONDS.toSeconds(duration)));
-            logToUI("firing setPlaybackPosition(0)");
-        }
     }
 
     private void logToUI(String message) {

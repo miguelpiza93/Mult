@@ -16,10 +16,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/preguntaJ2"
+        android:background="@drawable/piedra"
         android:textColor="#000000"
         android:textSize="@dimen/text_size_piedra"
-        android:background="@drawable/piedra"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <Button
         android:id="@+id/button2J2"
@@ -27,18 +27,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/preguntaJ2"
+        android:background="@drawable/piedra"
         android:textColor="#000000"
         android:textSize="@dimen/text_size_piedra"
-        android:background="@drawable/piedra"
-        android:visibility="gone" />
-
-    <Button
-        android:id="@+id/start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:background="@drawable/empezar"
         android:visibility="visible" />
 
     <TextView
@@ -46,12 +37,14 @@
         style="@style/cuestionStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/progressBarJ2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/acme"
+        android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/text_size_question"
-        android:visibility="visible" />
+        android:visibility="visible"
+        tools:text="2 x 1" />
 
     <TextView
         android:id="@+id/puntos"
@@ -60,18 +53,20 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/progressBarJ2"
         android:layout_marginRight="30dp"
-        android:textSize="@dimen/text_size_max_score"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:textSize="@dimen/text_size_max_score"
+        android:visibility="visible" />
 
     <ProgressBar
         android:id="@+id/progressBarJ2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/height_progress_bar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/puntos" />
+        android:layout_below="@+id/puntos"
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/labPuntajeMax"
@@ -80,9 +75,10 @@
         android:layout_alignLeft="@+id/progressBarJ2"
         android:layout_marginLeft="10dp"
         android:text="Puntaje Máximo"
-        android:textSize="@dimen/text_size_max_score"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:textSize="@dimen/text_size_max_score"
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/puntajeMax"
@@ -93,8 +89,9 @@
         android:layout_marginLeft="15dp"
         android:layout_toRightOf="@+id/labPuntajeMax"
         android:text="0"
-        android:textSize="@dimen/text_size_max_score"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:textSize="@dimen/text_size_max_score"
+        android:visibility="visible" />
 
 </RelativeLayout>

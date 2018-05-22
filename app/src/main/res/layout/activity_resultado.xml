@@ -13,11 +13,13 @@
         android:id="@+id/txt_Resultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:fontFamily="@font/acme"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
         android:textSize="@dimen/text_size_result"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        tools:text="Tu resultado es" />
 
     <ImageView
         android:id="@+id/home"
@@ -26,5 +28,17 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/home" />
+
+    <TextView
+        android:id="@+id/tvScoreResultGame2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_Resultado"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/acme"
+        android:textColor="#ffffff"
+        android:textSize="36sp"
+        tools:text="20" />
 
 </RelativeLayout>

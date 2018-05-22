@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -30,8 +31,9 @@ public class PlaceholderFragment extends Fragment {
     private Bundle b;
     private static InterstitialAd interstitial;
     private int juego;
-    private Button j1;
-    private Button j2;
+    private Button game1;
+    private Button game2;
+    private Button game3;
     private TextView text;
     private ListView listView;
     private TextView textNivel;
@@ -46,7 +48,6 @@ public class PlaceholderFragment extends Fragment {
      * Spiner que contiene la seleccion de la dificultad
      */
     private Spinner spinnerNivel;
-    private Button game3;
 
     /**
      * Returns a new instance of this fragment for the given section number.
@@ -74,6 +75,7 @@ public class PlaceholderFragment extends Fragment {
         if (BuildConfig.DEBUG) {
             adRequestI = new AdRequest.Builder()
                     .addTestDevice("C79063870167F0917969F257CD70A642")//Lo
+                    .addTestDevice("C23936013EF2D9BA46D36B1A21AF18B6")//Lo
                     .addTestDevice("1D6E14D9D821973C13370F0C46ECD264")//Mi
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                     .addTestDevice("04675459C2BE09CF506EDD1002143111")//Genymotion tablet
@@ -112,10 +114,10 @@ public class PlaceholderFragment extends Fragment {
 
         listView = rootView.findViewById(R.id.listView);
 
-        j1 = rootView.findViewById(R.id.buttonj1);
-        j2 = rootView.findViewById(R.id.buttonj2);
+        game1 = rootView.findViewById(R.id.buttonj1);
+        game2 = rootView.findViewById(R.id.buttonj2);
         game3 = rootView.findViewById(R.id.butGame3);
-        j2.setOnClickListener(new OnClickListener() {
+        game2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 juego = 2;
@@ -123,7 +125,7 @@ public class PlaceholderFragment extends Fragment {
             }
         });
 
-        j1.setOnClickListener(new OnClickListener() {
+        game1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 juego = 1;
@@ -211,13 +213,12 @@ public class PlaceholderFragment extends Fragment {
 
     public void cambiarPantallaPrincipal(boolean mostrarInicial) {
         LinearLayout layout = (LinearLayout) getActivity().findViewById(R.id.mainLayout);
+        GridLayout gridGames = getActivity().findViewById(R.id.gridGames);
         if (mostrarInicial) {
             listView.setVisibility(ListView.VISIBLE);
             text.setVisibility(TextView.VISIBLE);
             textNivel.setVisibility(TextView.GONE);
-            j1.setVisibility(Button.GONE);
-            j2.setVisibility(Button.GONE);
-            game3.setVisibility(Button.GONE);
+            gridGames.setVisibility(View.GONE);
             spinnerNivel.setVisibility(Spinner.GONE);
             layout.setBackgroundResource(R.drawable.tablas);
             pantallaPrincipal = true;
@@ -225,9 +226,7 @@ public class PlaceholderFragment extends Fragment {
             listView.setVisibility(ListView.GONE);
             text.setVisibility(TextView.GONE);
             textNivel.setVisibility(TextView.VISIBLE);
-            j1.setVisibility(Button.VISIBLE);
-            j2.setVisibility(Button.VISIBLE);
-            game3.setVisibility(Button.VISIBLE);
+            gridGames.setVisibility(View.VISIBLE);
             spinnerNivel.setVisibility(Spinner.VISIBLE);
             layout.setBackgroundResource(R.drawable.tablas_opaca);
             pantallaPrincipal = false;

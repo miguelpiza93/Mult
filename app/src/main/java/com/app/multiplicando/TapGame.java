@@ -52,6 +52,8 @@ public class TapGame extends AppCompatActivity {
     private List<ImageView> remainingLivesPlayer2;
     private LottieAnimationView animationFinish;
     private LottieAnimationView animationFinish2;
+    private MediaPlayer soundFail;
+    private boolean allTables;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,9 @@ public class TapGame extends AppCompatActivity {
 
         //Intent intent = new Intent( TapGame.this, NativeAdActivity.class);
         //startActivity(intent);
+
+        numA = getIntent().getExtras().getInt("Tabla");
+        allTables = (numA == -1);
 
         initializeControls();
 
@@ -173,8 +178,9 @@ public class TapGame extends AppCompatActivity {
                     if (remainingLivesPlayer2.isEmpty()) {
                         endGame(PLAYER_2);
                     }
-
-
+                }
+                if (soundFail != null) {
+                    soundFail.start();
                 }
                 validatingResponse = false;
             }
@@ -206,7 +212,8 @@ public class TapGame extends AppCompatActivity {
 
     private void showQuestion() {
         //Question
-        numA = random.nextInt(10) + 1;
+        if (allTables)
+            numA = random.nextInt(10) + 1;
         numB = random.nextInt(10) + 1;
         correctAnswer = numA * numB;
         tvQuestion.setText(numA + " x " + numB);
@@ -284,6 +291,7 @@ public class TapGame extends AppCompatActivity {
 
         random = new Random();
         sound = MediaPlayer.create(this, R.raw.star_sound);
+        soundFail = MediaPlayer.create(this, R.raw.ate_banana);
 
         tvRemainingLives31 = findViewById(R.id.tvBanana3Player1);
         tvRemainingLives21 = findViewById(R.id.tvBanana2Player1);
