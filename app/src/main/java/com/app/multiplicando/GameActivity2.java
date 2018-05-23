@@ -221,7 +221,7 @@ public class GameActivity2 extends AppCompatActivity {
 
         if (veces > puntajeMaximo) {
             if (todas)
-                DataBase.getInstanse(getApplicationContext()).actualizarPuntaje(2, 10, nivel, veces);
+                DataBase.getInstanse(getApplicationContext()).actualizarPuntaje(2, -1, nivel, veces);
             else
                 DataBase.getInstanse(getApplicationContext()).actualizarPuntaje(2, numA, nivel, veces);
         }

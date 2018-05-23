@@ -36,7 +36,7 @@ public class DataBase extends SQLiteOpenHelper
             db.execSQL("INSERT INTO Juego VALUES ( null, 'Juego " + i +"')");
 
             //for para las tablas
-            for ( int j = 1; j <= 10; j++ )
+            for ( int j = -1; j <= 10; j++ )
             {
                 //for para los niveles
                 for ( int k = 0; k < 4; k++ )

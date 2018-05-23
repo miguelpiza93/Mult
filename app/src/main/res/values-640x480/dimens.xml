@@ -10,7 +10,7 @@
     <dimen name="padding_piedra_question">38dp</dimen>
     <dimen name="margin_top_question">90dp</dimen>
     <dimen name="margin_top_rating_bar">12dp</dimen>
-    <dimen name="margin_btn_juegos">24dp</dimen>
+    <dimen name="margin_btn_juegos">34dp</dimen>
     <dimen name="margin_catalogo">80dp</dimen>
     <dimen name="padding_title">0dp</dimen>
     <dimen name="height_progress_bar">30dp</dimen>

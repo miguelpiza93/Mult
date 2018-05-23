@@ -302,7 +302,7 @@ public class GameActivity extends AppCompatActivity {
 
         if (correctas > puntajeMaximo) {
             if (todas)
-                DataBase.getInstanse(getApplicationContext()).actualizarPuntaje(1, 10, nivel, correctas);
+                DataBase.getInstanse(getApplicationContext()).actualizarPuntaje(1, -1, nivel, correctas);
             else
                 DataBase.getInstanse(getApplicationContext()).actualizarPuntaje(1, numA, nivel, correctas);
         }

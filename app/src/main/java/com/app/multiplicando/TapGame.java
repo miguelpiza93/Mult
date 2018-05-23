@@ -161,7 +161,7 @@ public class TapGame extends AppCompatActivity {
                     remainingLivesPlayer1.remove(remainingLivesPlayer1.size() - 1);
 
                     if (remainingLivesPlayer1.isEmpty()) {
-                        endGame(PLAYER_1);
+                        validateWinner(PLAYER_1);
                     }
 
                 } else {
@@ -176,7 +176,7 @@ public class TapGame extends AppCompatActivity {
                     remainingLivesPlayer2.remove(remainingLivesPlayer2.size() - 1);
 
                     if (remainingLivesPlayer2.isEmpty()) {
-                        endGame(PLAYER_2);
+                        validateWinner(PLAYER_2);
                     }
                 }
                 if (soundFail != null) {
@@ -184,6 +184,23 @@ public class TapGame extends AppCompatActivity {
                 }
                 validatingResponse = false;
             }
+        }
+    }
+
+    private void validateWinner(int player) {
+        int scorePlayer1 = Integer.parseInt(tvScorePlayer1.getText().toString());
+        int scorePlayer2 = Integer.parseInt(tvScorePlayer2.getText().toString());
+        if (scorePlayer1 > scorePlayer2)
+        {
+            endGame(PLAYER_2);
+        }
+        else if(scorePlayer2 > scorePlayer1)
+        {
+            endGame(PLAYER_1);
+        }
+        else
+        {
+            endGame(player);
         }
     }
 
