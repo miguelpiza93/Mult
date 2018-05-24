@@ -331,7 +331,6 @@ public class TablaActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        onPausePractice(false);
         Log.d(TAG, "onRestart");
     }
 

@@ -14,7 +14,7 @@
     <dimen name="appbar_height">50dp</dimen>
     <dimen name="padding_piedra_question">30dp</dimen>
     <dimen name="margin_pregunta">20dp</dimen>
-    <dimen name="margin_btn_juegos">24dp</dimen>
+    <dimen name="margin_btn_juegos">12dp</dimen>
     <dimen name="margin_nivel">50dp</dimen>
     <dimen name="margin_top_nivel">20dp</dimen>
     <dimen name="margin_top_question">60dp</dimen>
@@ -28,4 +28,5 @@
     <dimen name="height_progress_bar">20dp</dimen>
     <dimen name="button_close_size">30dp</dimen>
     <dimen name="button_pause_size">40dp</dimen>
+    <dimen name="button_practice_size">80dp</dimen>
 </resources>

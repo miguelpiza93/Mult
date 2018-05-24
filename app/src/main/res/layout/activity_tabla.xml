@@ -51,10 +51,10 @@
 
     <Button
         android:id="@+id/butPractice"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/button_practice_size"
+        android:layout_height="@dimen/button_practice_size"
         android:layout_marginBottom="12dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="@dimen/margin_btn_juegos"
         android:background="@drawable/button_blue"
         android:text="@string/listo"
         android:textColor="@android:color/white"
@@ -62,7 +62,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/butNext"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="@dimen/margin_btn_juegos" />
 
     <Button
         android:id="@+id/butClosePractice"
