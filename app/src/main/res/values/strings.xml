@@ -38,6 +38,7 @@
     <string name="game_one_name">Juego 1</string>
     <string name="game_two_name">Juego 2</string>
     <string name="game_three_name">Multijugador</string>
+    <string name="player_error">Error iniciando el reproductor de YouTube: %s</string>
 
 
 </resources>

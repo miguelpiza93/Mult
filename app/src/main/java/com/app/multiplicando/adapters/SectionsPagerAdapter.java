@@ -13,6 +13,7 @@ import android.util.Log;
 import com.app.multiplicando.AndroidVideoPlayer;
 import com.app.multiplicando.CatalogoTablas;
 import com.app.multiplicando.PlaceholderFragment;
+import com.app.multiplicando.YoutubeFragment;
 import com.app.multiplicando.interfaces.IComunication;
 
 /**
@@ -41,7 +42,7 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter implements I
             case 1:
                 return new CatalogoTablas();
             case 2:
-                return new AndroidVideoPlayer( );
+                return new YoutubeFragment( );
             default:
                 actual = PlaceholderFragment.newInstance(  );
                 return actual;
