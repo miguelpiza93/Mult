@@ -23,7 +23,7 @@ import java.util.Random;
 public class GameActivity2 extends AppCompatActivity {
     public final static int APRENDIZ = 150;
     public final static int NORMAL = 50;
-    public final static int RETO = 20;
+    public final static int RETO = 30;
 
     private boolean continua;
     private ProgressBar progressBar;

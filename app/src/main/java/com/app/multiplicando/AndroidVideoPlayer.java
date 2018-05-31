@@ -77,6 +77,7 @@ public class AndroidVideoPlayer extends Fragment
     {
         String uriPath;
         Uri uri;
+        /**
         switch ( tabla )
         {
             case 0:
@@ -148,6 +149,6 @@ public class AndroidVideoPlayer extends Fragment
 
             default:
                 break;
-        }
+        }**/
     }
 }

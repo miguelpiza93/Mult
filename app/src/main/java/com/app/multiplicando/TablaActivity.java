@@ -23,7 +23,6 @@ import java.util.TimerTask;
 
 public class TablaActivity extends AppCompatActivity {
     public static final String TAG = "TablaActivity";
-    public static final int MEDIA_RES_ID = R.raw.practice3;
     private static final String PRACTICE = "prac";
 
     private HashMap<Integer, Integer> tablesMap;
@@ -164,13 +163,17 @@ public class TablaActivity extends AppCompatActivity {
                 });
             }
         };
-        timer.scheduleAtFixedRate(timerTask, 4000, 3000);
+        timer.scheduleAtFixedRate(timerTask, 4000, 4000);
     }
 
     private void loadMedia() {
         String nameResource = String.format("%s%d", PRACTICE, actualTable);
         int resId = getResources().getIdentifier(nameResource, "raw", getPackageName());
-        //mPlayerAdapter.loadMedia();
+        if(actualTable == 10)
+        {
+            resId = getResources().getIdentifier(nameResource + "1", "raw", getPackageName());
+        }
+
         mPlayerAdapter.play(resId);
 
         mPlayerAdapter.addQueue(R.raw.por);
