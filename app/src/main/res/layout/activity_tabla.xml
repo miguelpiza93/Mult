@@ -42,7 +42,7 @@
         android:gravity="center"
         android:paddingTop="8dp"
         android:text="@string/tabla_practice"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_size_practice"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"

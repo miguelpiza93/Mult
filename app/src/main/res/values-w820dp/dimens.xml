@@ -27,5 +27,6 @@
     <dimen name="button_close_size">40dp</dimen>
     <dimen name="button_pause_size">60dp</dimen>
     <dimen name="button_practice_size">100dp</dimen>
+    <dimen name="text_size_practice">24dp</dimen>
 
 </resources>
