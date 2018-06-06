@@ -61,8 +61,7 @@
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/butNext"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginRight="@dimen/margin_btn_juegos" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/butClosePractice"

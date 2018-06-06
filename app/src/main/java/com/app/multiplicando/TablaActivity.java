@@ -323,6 +323,11 @@ public class TablaActivity extends AppCompatActivity {
         if (isChangingConfigurations() && mPlayerAdapter.isPlaying()) {
             Log.d(TAG, "onStop: don't release MediaPlayer as screen is rotating & playing");
         } else {
+            if(butPausePractice != null && butPausePractice.getVisibility() == View.VISIBLE)
+            {
+                butPausePractice.setBackgroundResource(R.drawable.play);
+                pausePractice = true;
+            }
             mPlayerAdapter.release();
             if (timer != null) {
                 timer.cancel();
